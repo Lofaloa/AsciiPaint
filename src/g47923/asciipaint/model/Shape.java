@@ -14,7 +14,7 @@ public interface Shape {
      * @param dy is the difference added to y position.
      * @return this Shape with the given position.
      */
-    Shape move(double dx, double dy);
+    void move(double dx, double dy);
     
     /**
      * Tells if the given point is in this shape.
