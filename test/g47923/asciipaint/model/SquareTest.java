@@ -20,7 +20,7 @@ public class SquareTest {
     @Test(expected = IllegalArgumentException.class)
     public void squareInitializationNegativeSide() {
         Point p = new Point(2, 4);
-        Square s = new Square(p, -4, 'a');
+        new Square(p, -4, 'a');
     }
 
 }

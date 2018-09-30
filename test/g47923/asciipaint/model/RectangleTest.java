@@ -13,13 +13,13 @@ public class RectangleTest {
     @Test(expected = IllegalArgumentException.class)
     public void rectangleInitializationNegativeWidth() {
         Point p = new Point(2, 4);
-        Rectangle r = new Rectangle(p, -4, 16, 'a');
+        new Rectangle(p, -4, 16, 'a');
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void rectangleInitializationNegativeHeight() {
         Point p = new Point(2, 4);
-        Rectangle r = new Rectangle(p, 4, -16, 'a');
+        new Rectangle(p, 4, -16, 'a');
     }
 
     @Test

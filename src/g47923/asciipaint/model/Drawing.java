@@ -1,6 +1,7 @@
 package g47923.asciipaint.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -48,7 +49,7 @@ public class Drawing {
      * @return the shape of this drawing.
      */
     List<Shape> getShapes() {
-        return shapes;
+        return new ArrayList<>(shapes);
     }
 
     /**
@@ -73,19 +74,34 @@ public class Drawing {
      * Gets the shape containing the given point.
      *
      * @param p is the point to analyze.
-     * @return the shape containing the given point.
+     * @return the shape containing the given point, if no shape is found null
+     * is returned.
      */
     public Shape getShapeAt(Point p) {
-        return new Square(new Point(), 4, ';');
+        for (Shape shape : shapes) {
+            if (shape.isInside(p)) {
+                return shape;
+            }
+        }
+        return null;
     }
 
     /**
      * Adds the given shape to this drawing.
      *
-     * @param shape
+     * @param shape is the shape to add.
      */
     public void addShape(Shape shape) {
         shapes.add(shape);
+    }
+
+    /**
+     * Adds the given shapes to this drawing.
+     *
+     * @param shapes are the shapes to add.
+     */
+    void addAllShapes(Shape ...shapes) {
+        this.shapes.addAll(Arrays.asList(shapes));
     }
 
 }
