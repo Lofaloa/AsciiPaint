@@ -40,7 +40,7 @@ public class RectangleTest {
     }
 
     @Test
-    public void isInternalPointInside() {
+    public void isBottomRightPointInside() {
         Point p = new Point(2, 4);
         Point p1 = new Point(6, 20);
         Rectangle r = new Rectangle(p, 4, 16, 'a');
