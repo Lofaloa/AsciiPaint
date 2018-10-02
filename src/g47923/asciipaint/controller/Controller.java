@@ -27,11 +27,12 @@ public class Controller {
      * Starts this game.
      */
     public void start() {
-        while (true) {
+        boolean isOver = false;
+        while (!isOver) {
             view.printPrompt();
             String[] line = splitLine(view.readLine());
             try {
-                runCommand(line);
+                isOver = runCommand(line);
             } catch (IllegalArgumentException ex) {
                 System.out.println(ex.getMessage());
             }
@@ -57,7 +58,7 @@ public class Controller {
      * @throws IllegalArgumentException if the given string is not a command.
      */
     String requireCommandName(String str) {
-        if (!str.equals("show") && !str.equals("add")) {
+        if (!str.equals("show") && !str.equals("add") && !str.equals("exit")) {
             throw new IllegalArgumentException("\"" + str + "\" is not "
                     + "a valid command.");
         }
@@ -119,8 +120,9 @@ public class Controller {
      * Run the command entered by the user.
      *
      * @param tokens are the tokens forming the command to run.
+     * @return true if the user ask for exiting the program.
      */
-    void runCommand(String[] tokens) {
+    boolean runCommand(String[] tokens) {
         if (tokens.length == 0) {
             throw new IllegalArgumentException("No tokens to parse.");
         }
@@ -136,9 +138,12 @@ public class Controller {
                     addNewRectangle(tokens[2], tokens[3], tokens[4], tokens[5],
                             tokens[6]);
             }
-        } else {
+        } else if (requireCommandName(tokens[0]).equals("show")){
             System.out.println(asciiPaint.asAscii());
+        } else {
+            return true;
         }
+        return false;
     }
 
 }
