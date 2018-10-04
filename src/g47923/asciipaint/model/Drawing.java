@@ -22,7 +22,7 @@ public class Drawing {
      * @param height is the height of this drawing.
      * @param width is the width of this drawing.
      */
-    public Drawing(int height, int width) {
+    public Drawing(int width, int height) {
         if (height < 0) {
             throw new IllegalArgumentException(height + " is not valid, "
                     + "the height should be positive.");

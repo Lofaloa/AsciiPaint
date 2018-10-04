@@ -23,6 +23,10 @@ public class View {
         this.in = new Scanner(System.in);
     }
 
+    public void printTitle() {
+        System.out.println("ATL3 - exercice: Ascii Paint, Logan Farci (47923), 2018.");
+    }
+
     /**
      * Prints a prompt for the user.
      */

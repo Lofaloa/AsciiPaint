@@ -12,7 +12,16 @@ import g47923.asciipaint.model.Drawing;
 public class Application {
 
     public static void main(String[] args) {
-        AsciiPaint asciiPaint = new AsciiPaint(new Drawing(100, 30));
+        int width = 50;
+        int height = 50;
+        try {
+            width = Integer.parseInt(args[0]);
+            height = Integer.parseInt(args[1]);
+        } catch (NumberFormatException ex) {
+            System.err.println("usage: invalid arguments, it should be the width"
+                    + " and height od the drawing.");
+        }
+        AsciiPaint asciiPaint = new AsciiPaint(new Drawing(width, height));
         Controller c = new Controller(asciiPaint);
         c.start();
     }
