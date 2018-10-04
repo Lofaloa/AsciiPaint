@@ -1,7 +1,8 @@
 package g47923.asciipaint.model;
 
 /**
- *
+ * Represents a circle.
+ * 
  * @author g47923
  */
 public class Circle extends ColoredShape {

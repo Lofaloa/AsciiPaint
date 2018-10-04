@@ -43,7 +43,7 @@ public class AsciiPaint {
      * @param x is the x position of the circle center.
      * @param y is the y position of the circle center.
      * @param radius is the size of the circle radius.
-     * @param color is the color if the circle.
+     * @param color is the color of the circle.
      */
     public void newCircle(int x, int y, double radius, char color) {
         drawing.addShape(new Circle(new Point(x, y), radius, color));
@@ -56,7 +56,7 @@ public class AsciiPaint {
      * @param y is the y position of the rectangle upper left point.
      * @param width is the width of the rectangle.
      * @param height is the height of the rectangle.
-     * @param color is the color if the rectangle.
+     * @param color is the color of the rectangle.
      */
     public void newRectangle(int x, int y, double width, double height, char color) {
         drawing.addShape(new Rectangle(new Point(x, y), width, height, color));
@@ -68,7 +68,7 @@ public class AsciiPaint {
      * @param x is the x position of the square upper left point.
      * @param y is the y position of the square left point.
      * @param side is the side of the square.
-     * @param color is the color if the square.
+     * @param color is the color of the square.
      */
     public void newSquare(int x, int y, double side, char color) {
         drawing.addShape(new Square(new Point(x, y), side, color));
