@@ -84,5 +84,13 @@ public class AsciiPaintTest {
         ap.newSquare(0, 0, 2, 'a');
         assertTrue(ap.getDrawing().getShapes().get(0) instanceof Square);
     }
+    
+    @Test
+    public void newTriangleAdded() {
+        Drawing d = new Drawing(100, 30);
+        AsciiPaint ap = new AsciiPaint(d);
+        ap.newTriangle(1, 2, 3, 4, 5, 6, 't');
+        assertTrue(ap.getDrawing().getShapes().get(0) instanceof Triangle);
+    }
 
 }

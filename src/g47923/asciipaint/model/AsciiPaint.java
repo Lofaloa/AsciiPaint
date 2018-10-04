@@ -75,6 +75,23 @@ public class AsciiPaint {
     }
 
     /**
+     * Adds a new triangle to this drawing.
+     *
+     * @param x1 is the x position of the triangle first corner.
+     * @param y1 is the y position of the triangle first corner.
+     * @param x2 is the x position of the triangle second corner.
+     * @param y2 is the y position of the triangle second corner.
+     * @param x3 is the x position of the triangle third corner.
+     * @param y3 is the y position of the triangle third corner.
+     * @param color is the color of the new triangle.
+     */
+    public void newTriangle(int x1, int y1, int x2, int y2, int x3, int y3,
+             char color) {
+        drawing.addAllShapes(new Triangle(new Point(x1, y1), new Point(x2, y2),
+                new Point(x3, y3), color));
+    }
+
+    /**
      * Represents this game drawing.
      *
      * @return a representation of this game drawing.
