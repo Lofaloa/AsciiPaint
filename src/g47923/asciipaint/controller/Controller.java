@@ -66,8 +66,8 @@ public class Controller {
     }
 
     /**
-     * Makes sure that the given string is a shape name. Three shape names are
-     * known: circle, rectangle and square.
+     * Makes sure that the given string is a shape name. Four shape names are
+     * known: circle, rectangle, triangle and square.
      *
      * @param str is the string to parse.
      * @return the given shape name.
@@ -75,7 +75,7 @@ public class Controller {
      */
     String requireShapeName(String str) {
         if (!str.equals("circle") && !str.equals("rectangle")
-                && !str.equals("square")) {
+                && !str.equals("square") && !str.equals("triangle")) {
             throw new IllegalArgumentException("\"" + str + "\" is not "
                     + "a valid shape name.");
         }
@@ -110,10 +110,22 @@ public class Controller {
      *
      * @param args are the characteristics of the added circle.
      */
-    void addnewCircle(String... args) {
+    void addNewCircle(String... args) {
         asciiPaint.newCircle(Integer.parseInt(args[0]),
                 Integer.parseInt(args[1]),
                 Integer.parseInt(args[2]), args[3].charAt(0));
+    }
+
+    /**
+     * Adds a new triangle corresponding to the given arguments.
+     *
+     * @param args are the characteristics of the added triangle.
+     */
+    void addNewTriangle(String... args) {
+        asciiPaint.newTriangle(Integer.parseInt(args[0]), Integer.parseInt(args[1]),
+                Integer.parseInt(args[2]), Integer.parseInt(args[3]),
+                Integer.parseInt(args[4]), Integer.parseInt(args[5]),
+                args[6].charAt(0));
     }
 
     /**
@@ -126,10 +138,13 @@ public class Controller {
         if (tokens.length == 0) {
             throw new IllegalArgumentException("No tokens to parse.");
         }
+        if (tokens.length <= 6) {
+            throw new IllegalArgumentException("Not enough arguments.");
+        }
         if (requireCommandName(tokens[0]).equals("add")) {
             switch (requireShapeName(tokens[1])) {
                 case "circle":
-                    addnewCircle(tokens[2], tokens[3], tokens[4], tokens[5]);
+                    addNewCircle(tokens[2], tokens[3], tokens[4], tokens[5]);
                     break;
                 case "square":
                     addNewSquare(tokens[2], tokens[3], tokens[4], tokens[5]);
@@ -137,8 +152,10 @@ public class Controller {
                 case "rectangle":
                     addNewRectangle(tokens[2], tokens[3], tokens[4], tokens[5],
                             tokens[6]);
+                case "triangle":
+                    addNewTriangle(tokens[2], tokens[3], tokens[4], tokens[5], tokens[6], tokens[7], tokens[8]);
             }
-        } else if (requireCommandName(tokens[0]).equals("show")){
+        } else if (requireCommandName(tokens[0]).equals("show")) {
             System.out.println(asciiPaint.asAscii());
         } else {
             return true;

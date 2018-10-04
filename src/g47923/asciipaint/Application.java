@@ -12,7 +12,7 @@ import g47923.asciipaint.model.Drawing;
 public class Application {
 
     public static void main(String[] args) {
-        AsciiPaint asciiPaint = new AsciiPaint(new Drawing(30, 30));
+        AsciiPaint asciiPaint = new AsciiPaint(new Drawing(100, 30));     
         Controller c = new Controller(asciiPaint);
         c.start();
     }
