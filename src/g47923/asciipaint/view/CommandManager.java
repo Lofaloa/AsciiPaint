@@ -3,6 +3,7 @@ package g47923.asciipaint.view;
 import g47923.asciipaint.model.AsciiPaint;
 import g47923.asciipaint.model.Point;
 import java.util.Arrays;
+import static java.lang.Integer.parseInt;
 
 /**
  * Manages the commands.
@@ -70,46 +71,63 @@ public class CommandManager {
      * Adds a new rectangle corresponding to the given arguments.
      *
      * @param args are the characteristics of the added rectangle.
+     * @throws IllegalArgumentException if args lacks required argument.
      */
-    void addNewRectangle(String... args) {
-        asciiPaint.newRectangle(Integer.parseInt(args[0]),
-                Integer.parseInt(args[1]),
-                Integer.parseInt(args[2]),
-                Integer.parseInt(args[3]), args[4].charAt(0));
+    void addNewRectangle(String[] args) {
+        if (args.length < 5) {
+            throw new IllegalArgumentException("Arguments undefined, a "
+                    + "rectangle requires: x, y, width, length and a color.");
+        }
+        asciiPaint.newRectangle(parseInt(args[0]), parseInt(args[1]),
+                parseInt(args[2]), parseInt(args[3]), args[4].charAt(0));
     }
 
     /**
      * Adds a new square corresponding to the given arguments.
      *
      * @param args are the characteristics of the added square.
+     * @throws IllegalArgumentException if args lacks required argument.
+
      */
-    void addNewSquare(String... args) {
-        asciiPaint.newSquare(Integer.parseInt(args[0]),
-                Integer.parseInt(args[1]),
-                Integer.parseInt(args[2]), args[3].charAt(0));
+    void addNewSquare(String[] args) {
+        if (args.length < 4) {
+            throw new IllegalArgumentException("Arguments undefined, a "
+                    + "square requires: x, y, side and a color.");
+        }
+        asciiPaint.newSquare(parseInt(args[0]), parseInt(args[1]),
+                parseInt(args[2]), args[3].charAt(0));
     }
 
     /**
      * Adds a new circle corresponding to the given arguments.
      *
      * @param args are the characteristics of the added circle.
+     * @throws IllegalArgumentException if args lacks required argument.
+
      */
-    void addNewCircle(String... args) {
-        asciiPaint.newCircle(Integer.parseInt(args[0]),
-                Integer.parseInt(args[1]),
-                Integer.parseInt(args[2]), args[3].charAt(0));
+    void addNewCircle(String[] args) {
+        if (args.length < 4) {
+            throw new IllegalArgumentException("Arguments undefined, a "
+                    + "circle requires: x, y, radius and a color.");
+        }
+        asciiPaint.newCircle(parseInt(args[0]), parseInt(args[1]),
+                parseInt(args[2]), args[3].charAt(0));
     }
 
     /**
      * Adds a new triangle corresponding to the given arguments.
      *
      * @param args are the characteristics of the added triangle.
+     * @throws IllegalArgumentException if args lacks required argument.
      */
     void addNewTriangle(String... args) {
-        asciiPaint.newTriangle(Integer.parseInt(args[0]), Integer.parseInt(args[1]),
-                Integer.parseInt(args[2]), Integer.parseInt(args[3]),
-                Integer.parseInt(args[4]), Integer.parseInt(args[5]),
-                args[6].charAt(0));
+        if (args.length < 7) {
+            throw new IllegalArgumentException("Arguments undefined, a "
+                    + "triangle requires: x1, y1, x2, y2, x3, y3 and a color.");
+        }
+        asciiPaint.newTriangle(parseInt(args[0]), parseInt(args[1]),
+                parseInt(args[2]), parseInt(args[3]), parseInt(args[4]),
+                parseInt(args[5]), args[6].charAt(0));
     }
 
     /**
@@ -117,41 +135,25 @@ public class CommandManager {
      *
      * @param shape is the name of the shape.
      * @param args are the argument of the shape.
+     * @throws IllegalArgumentException is the given shape name does not exist.
      */
     void addNewShape(String shape, String... args) {
         switch (shape) {
             case "circle":
-                if (args.length < 4) {
-                    throw new IllegalArgumentException("Arguments undefined, a "
-                            + "circle requires: x, y, radius and a color.");
-                }
-                addNewCircle(args[0], args[1], args[2], args[3]);
+                addNewCircle(args);
                 break;
             case "square":
-                if (args.length < 4) {
-                    throw new IllegalArgumentException("Arguments undefined, a "
-                            + "square requires: x, y, side and a color.");
-                }
-
-                addNewSquare(args[0], args[1], args[2], args[3]);
+                addNewSquare(args);
                 break;
             case "rectangle":
-                if (args.length < 5) {
-                    throw new IllegalArgumentException("Arguments undefined, a "
-                            + "rectangle requires: x, y, width, length and a color.");
-                }
-                addNewRectangle(args[0], args[1], args[2], args[3], args[4]);
+                addNewRectangle(args);
                 break;
             case "triangle":
-                if (args.length < 7) {
-                    throw new IllegalArgumentException("Arguments undefined, a "
-                            + "triangle requires: x1, y1, x2, y2, x3, y3 and a color.");
-                }
-                addNewTriangle(args[0], args[1], args[2], args[3], args[4],
-                        args[5], args[6]);
+                addNewTriangle(args);
                 break;
             default:
-                System.out.println("Unknown shape");
+                throw new IllegalArgumentException("\"" + shape + "\" is not a "
+                        + "shape.");
         }
     }
 
@@ -160,6 +162,7 @@ public class CommandManager {
      *
      * @param x is the x position of the point.
      * @param y is the y position of the point.
+     * @throws IllegalArgumentException if there is no shape to remove.
      */
     public void removeShapeAt(String x, String y) {
         if (asciiPaint.getDrawing().getShapes().isEmpty()) {
@@ -168,6 +171,8 @@ public class CommandManager {
         asciiPaint.removeShapeAt(new Point(Integer.parseInt(x), Integer.parseInt(y)));
     }
 
+    
+    
     /**
      * Runs the command entered by the user.
      *
