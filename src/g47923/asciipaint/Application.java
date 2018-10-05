@@ -20,24 +20,22 @@ public class Application {
     public static void main(String[] args) {
         if (args.length == 1 || args.length > 2) {
             System.out.println("usage: none or two arguments are required.");
-        } else if (args.length == 0) {
+            System.exit(-1);
+        }
+        if (args.length == 0) {
             startDefault();
-        } else {
-            int width = 50;
-            int height = 50;
-            try {
-                width = Integer.parseInt(args[0]);
-                height = Integer.parseInt(args[1]);
-            } catch (NumberFormatException ex) {
-                System.err.println("usage: invalid arguments, it should be the width"
-                        + " and height od the drawing.");
-            }
-            try {
-                startCustom(width, height);
-            } catch (IllegalArgumentException ex) {
-                System.err.println(ex.getMessage());
-            }
+            System.exit(-2);
+        }
+        try {
+            int width = Integer.parseInt(args[0]);
+            int height = Integer.parseInt(args[1]);
+            startCustom(width, height);
 
+        } catch (NumberFormatException ex) {
+            System.err.println("usage: invalid arguments, it should be the width"
+                    + " and height of the drawing.");
+        } catch (IllegalArgumentException ex) {
+            System.err.println(ex.getMessage());
         }
 
     }

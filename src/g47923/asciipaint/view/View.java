@@ -41,7 +41,12 @@ public class View {
      * @return the current line.
      */
     public String readLine() {
-        return in.nextLine();
+        String line = in.nextLine();
+        while (line.length() == 0) {
+            printPrompt();
+            line =  in.nextLine();
+        }
+        return line;     
     }
 
 }
