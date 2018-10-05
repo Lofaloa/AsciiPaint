@@ -40,26 +40,45 @@ public class RectangleTest {
     }
 
     @Test
-    public void isBottomRightPointInside() {
-        Point p = new Point(2, 4);
-        Point p1 = new Point(6, 20);
-        Rectangle r = new Rectangle(p, 4, 16, 'a');
-        assertTrue(r.isInside(p1));
+    public void areCornersInside() {
+        Point a = new Point(2, 4);
+        Point b = new Point(6, 4);
+        Point c = new Point(6, 20);
+        Point d = new Point(2, 20);
+        Rectangle r = new Rectangle(a, 4, 16, 'a');
+        assertTrue(r.isInside(a) && r.isInside(b) && r.isInside(c) && r.isInside(d));
     }
 
     @Test
-    public void isExternalPointNotInside() {
+    public void isRandomPointOnTopNotInside() {
         Point p = new Point(2, 4);
-        Point p1 = new Point(6, 21);
+        Point p1 = new Point(3, 3);
         Rectangle r = new Rectangle(p, 4, 16, 'a');
         assertFalse(r.isInside(p1));
     }
 
     @Test
-    public void isUpperLeftPointInside() {
+    public void isRandomPointOnRightNotInside() {
         Point p = new Point(2, 4);
+        Point p1 = new Point(8, 5);
         Rectangle r = new Rectangle(p, 4, 16, 'a');
-        assertTrue(r.isInside(p));
+        assertFalse(r.isInside(p1));
+    }
+
+    @Test
+    public void isRandomPointOnBottomNotInside() {
+        Point p = new Point(2, 4);
+        Point p1 = new Point(3, 23);
+        Rectangle r = new Rectangle(p, 4, 16, 'a');
+        assertFalse(r.isInside(p1));
+    }
+
+    @Test
+    public void isRandomPointOnLeftNotInside() {
+        Point p = new Point(2, 4);
+        Point p1 = new Point(0, 6);
+        Rectangle r = new Rectangle(p, 4, 16, 'a');
+        assertFalse(r.isInside(p1));
     }
 
 }

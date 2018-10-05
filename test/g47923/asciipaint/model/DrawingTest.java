@@ -13,7 +13,7 @@ public class DrawingTest {
     @Test
     public void drawingInitializationGivenWidthAndHeight() {
         Drawing d = new Drawing(100, 30);
-        assertTrue(d.getWidth() == 30 && d.getHeight() == 100);
+        assertTrue(d.getWidth() == 100 && d.getHeight() == 30);
     }
 
     @Test

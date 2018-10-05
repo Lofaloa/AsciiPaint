@@ -69,8 +69,8 @@ public class Rectangle extends ColoredShape {
 
     @Override
     public boolean isInside(Point p) {
-        return p.getX() <= upperLeft.getX() + width
-                && p.getY() <= upperLeft.getY() + height;
+        return upperLeft.getX() <= p.getX() && p.getX() <= upperLeft.getX() + width
+                && upperLeft.getY() <= p.getY() && p.getY() <= upperLeft.getY() + height;
     }
 
 }
