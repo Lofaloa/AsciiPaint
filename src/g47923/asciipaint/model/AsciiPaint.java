@@ -110,14 +110,16 @@ public class AsciiPaint {
      */
     public String asAscii() {
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < drawing.getHeight(); i++) {
-            for (int j = 0; j < drawing.getWidth(); j++) {
+        for (int i = 1; i <= drawing.getHeight(); i++) {
+            for (int j = 1; j <= drawing.getWidth(); j++) {
                 Point currentPoint = new Point(i, j);
                 Shape s = drawing.getShapeAt(currentPoint);
                 if (s != null && s.isInside(currentPoint)) {
+                    builder.append(" ");
                     builder.append(s.getColor());
+                    builder.append(" ");
                 } else {
-                    builder.append(' ');
+                    builder.append(" . ");
                 }
             }
             builder.append('\n');

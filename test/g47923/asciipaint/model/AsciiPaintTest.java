@@ -103,5 +103,12 @@ public class AsciiPaintTest {
         ap.removeShapeAt(new Point(1, 2));
         assertTrue(ap.getDrawing().getShapes().isEmpty());
     }
+    
+    @Test
+    public void testAsAscii() {
+        Drawing d = new Drawing(100, 30);
+        AsciiPaint ap = new AsciiPaint(d);
+        assertFalse(ap.asAscii().isEmpty());
+    }
 
 }
