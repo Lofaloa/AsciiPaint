@@ -5,7 +5,7 @@ import g47923.asciipaint.model.Point;
 import java.util.Arrays;
 
 /**
- *  Manages the commands.
+ * Manages the commands.
  *
  * @author g47923
  */
@@ -154,16 +154,17 @@ public class CommandManager {
                 System.out.println("Unknown shape");
         }
     }
-    
+
     /**
      * Removes the shape containing the given point.
-     * 
+     *
      * @param x is the x position of the point.
      * @param y is the y position of the point.
      */
     public void removeShapeAt(String x, String y) {
-        if (asciiPaint.getDrawing().getShapes().isEmpty())
+        if (asciiPaint.getDrawing().getShapes().isEmpty()) {
             throw new IllegalStateException("No shape to remove.");
+        }
         asciiPaint.removeShapeAt(new Point(Integer.parseInt(x), Integer.parseInt(y)));
     }
 
@@ -179,6 +180,9 @@ public class CommandManager {
         }
         switch (requireCommandName(tokens[0])) {
             case "add":
+                if (tokens.length == 1) {
+                    throw new IllegalArgumentException("add requires arguments.");
+                }
                 addNewShape(requireShapeName(tokens[1]),
                         Arrays.copyOfRange(tokens, 2, tokens.length));
                 break;
