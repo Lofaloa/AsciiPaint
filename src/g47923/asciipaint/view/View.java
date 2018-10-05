@@ -10,7 +10,6 @@ import java.util.Scanner;
  */
 public class View {
 
-    private final AsciiPaint asciiPaint;
     private final Scanner in;
 
     /**
@@ -19,10 +18,12 @@ public class View {
      * @param asciiPaint is the AsciiPaint of this view.
      */
     public View(AsciiPaint asciiPaint) {
-        this.asciiPaint = asciiPaint;
-        this.in = new Scanner(System.in);
+        this.in = new Scanner(System.in, "utf-8");
     }
 
+    /**
+     * Prints the title of AsciiPaint.
+     */
     public void printTitle() {
         System.out.println("ATL3 - exercice: Ascii Paint, Logan Farci (47923), 2018.");
     }

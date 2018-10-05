@@ -11,6 +11,12 @@ import g47923.asciipaint.model.Drawing;
  */
 public class Application {
 
+    /**
+     * Starts the program.
+     *
+     * @param args is width and height of the program drawing. If args is empty,
+     * the drawing is initialized with default size.
+     */
     public static void main(String[] args) {
         if (args.length == 1 || args.length > 2) {
             System.out.println("usage: none or two arguments are required.");
@@ -48,6 +54,9 @@ public class Application {
 
     /**
      * Starts this program with custom width and height for the drawing.
+     *
+     * @param width is the width of the drawing.
+     * @param height is the height of the drawing.
      */
     public static void startCustom(int width, int height) {
         AsciiPaint asciiPaint = new AsciiPaint(new Drawing(width, height));

@@ -20,6 +20,7 @@ public class AsciiPaint {
      * Initializes this game with a given blank drawing.
      *
      * @param drawing is the drawing of this game.
+     * @throws IllegalArgumentException if the given drawing is not empty.
      */
     public AsciiPaint(Drawing drawing) {
         if (!drawing.getShapes().isEmpty()) {
@@ -97,20 +98,20 @@ public class AsciiPaint {
      * @return a representation of this game drawing.
      */
     public String asAscii() {
-        String str = "";
+        StringBuilder builder = new StringBuilder();
         for (int i = 0; i < drawing.getHeight(); i++) {
             for (int j = 0; j < drawing.getWidth(); j++) {
                 Point currentPoint = new Point(i, j);
                 Shape s = drawing.getShapeAt(currentPoint);
                 if (s != null && s.isInside(currentPoint)) {
-                    str += s.getColor();
+                    builder.append(s.getColor());
                 } else {
-                    str += " ";
+                    builder.append(' ');
                 }
             }
-            str += '\n';
+            builder.append('\n');
         }
-        return str;
+        return builder.toString();
     }
 
 }

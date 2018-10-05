@@ -71,21 +71,19 @@ public class Triangle extends ColoredShape {
      * @param c is a point of a triangle.
      * @return the surface a of the given triangle.
      */
-    //Formula used: https://www.mathopenref.com/coordtrianglearea.html.
     double surface(Point a, Point b, Point c) {
         return Math.abs((a.getX() * (b.getY() - c.getY()) 
                 + b.getX() * (c.getY() - a.getY())
                 + c.getX() * (a.getY() - b.getY())) / 2.0);
     }
 
-    //https://www.geeksforgeeks.org/check-whether-a-given-point-lies-inside-a-triangle-or-not/
     @Override
     public boolean isInside(Point p) {
         double thisArea = surface(getCornerA(), getCornerB(), getCornerC());
         double pbcArea = surface(p, getCornerB(), getCornerC());
         double pacArea = surface(p, getCornerA(), getCornerC());
         double pabArea = surface(p, getCornerA(), getCornerB());
-        return thisArea == (pbcArea + pacArea + pabArea);
+        return Double.compare(thisArea, pbcArea + pacArea + pabArea) == 0;
     }
 
 }

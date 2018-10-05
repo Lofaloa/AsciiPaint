@@ -138,8 +138,8 @@ public class CommandManager {
                     throw new IllegalArgumentException("Arguments undefined, a "
                             + "rectangle requires: x, y, width, length and a color.");
                 }
-
                 addNewRectangle(args[0], args[1], args[2], args[3], args[4]);
+                break;
             case "triangle":
                 if (args.length < 7) {
                     throw new IllegalArgumentException("Arguments undefined, a "
@@ -147,6 +147,9 @@ public class CommandManager {
                 }
                 addNewTriangle(args[0], args[1], args[2], args[3], args[4],
                         args[5], args[6]);
+                break;
+            default:
+                System.out.println("Unknown shape");
         }
     }
 
@@ -160,13 +163,16 @@ public class CommandManager {
         if (tokens.length == 0) {
             throw new IllegalArgumentException("No tokens to parse.");
         }
-        if (requireCommandName(tokens[0]).equals("add")) {
-            addNewShape(requireShapeName(tokens[1]),
-                    Arrays.copyOfRange(tokens, 2, tokens.length));
-        } else if (requireCommandName(tokens[0]).equals("show")) {
-            System.out.println(asciiPaint.asAscii());
-        } else {
-            return true;
+        switch (requireCommandName(tokens[0])) {
+            case "add":
+                addNewShape(requireShapeName(tokens[1]),
+                        Arrays.copyOfRange(tokens, 2, tokens.length));
+                break;
+            case "show":
+                System.out.println(asciiPaint.asAscii());
+                break;
+            default:
+                return true;
         }
         return false;
     }
