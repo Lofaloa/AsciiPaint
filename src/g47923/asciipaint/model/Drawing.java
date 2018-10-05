@@ -48,7 +48,7 @@ public class Drawing {
      *
      * @return the shape of this drawing.
      */
-    List<Shape> getShapes() {
+    public List<Shape> getShapes() {
         return new ArrayList<>(shapes);
     }
 
@@ -93,6 +93,15 @@ public class Drawing {
      */
     public void addShape(Shape shape) {
         shapes.add(shape);
+    }
+    
+    /**
+     * Removes the given shape from this drawing.
+     * 
+     * @param shape is the shape to remove.
+     */
+    public void remove(Shape shape) {
+        shapes.remove(shape);
     }
 
     /**

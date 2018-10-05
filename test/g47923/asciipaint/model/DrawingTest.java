@@ -76,6 +76,15 @@ public class DrawingTest {
         assertTrue(1 == d.getShapes().size()
                 && d.getShapes().get(0) instanceof Square);
     }
+    
+    @Test
+    public void removeShape() {
+        Drawing d = new Drawing(100, 30);
+        Shape shape = new Square(new Point(), 5, 'x');
+        d.addShape(shape);
+        d.remove(shape);
+        assertTrue(d.getShapes().isEmpty());
+    }
 
     @Test
     public void addShapes() {

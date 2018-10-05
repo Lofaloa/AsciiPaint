@@ -1,6 +1,7 @@
 package g47923.asciipaint.view;
 
 import g47923.asciipaint.model.AsciiPaint;
+import g47923.asciipaint.model.Point;
 import java.util.Arrays;
 
 /**
@@ -40,7 +41,8 @@ public class CommandManager {
      * @throws IllegalArgumentException if the given string is not a command.
      */
     String requireCommandName(String str) {
-        if (!str.equals("show") && !str.equals("add") && !str.equals("exit")) {
+        if (!str.equals("show") && !str.equals("add") && !str.equals("exit")
+                && !str.equals("remove")) {
             throw new IllegalArgumentException("\"" + str + "\" is not "
                     + "a command.");
         }
@@ -152,6 +154,18 @@ public class CommandManager {
                 System.out.println("Unknown shape");
         }
     }
+    
+    /**
+     * Removes the shape containing the given point.
+     * 
+     * @param x is the x position of the point.
+     * @param y is the y position of the point.
+     */
+    public void removeShapeAt(String x, String y) {
+        if (asciiPaint.getDrawing().getShapes().isEmpty())
+            throw new IllegalStateException("No shape to remove.");
+        asciiPaint.removeShapeAt(new Point(Integer.parseInt(x), Integer.parseInt(y)));
+    }
 
     /**
      * Runs the command entered by the user.
@@ -167,6 +181,13 @@ public class CommandManager {
             case "add":
                 addNewShape(requireShapeName(tokens[1]),
                         Arrays.copyOfRange(tokens, 2, tokens.length));
+                break;
+            case "remove":
+                if (tokens.length < 3) {
+                    throw new IllegalArgumentException("Not enough arguments,"
+                            + " remove requires: x and y.");
+                }
+                removeShapeAt(tokens[1], tokens[2]);
                 break;
             case "show":
                 System.out.println(asciiPaint.asAscii());
