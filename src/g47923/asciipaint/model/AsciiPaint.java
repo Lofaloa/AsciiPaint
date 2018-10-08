@@ -37,7 +37,7 @@ public class AsciiPaint {
      *
      * @return this game drawing.
      */
-    public Drawing getDrawing() {
+    Drawing getDrawing() {
         return drawing;
     }
 
@@ -59,7 +59,7 @@ public class AsciiPaint {
      * @param color is the color of the circle.
      */
     public void newCircle(int x, int y, double radius, char color) {
-        drawing.addShape(new Circle(new Point(x, y), radius, color));
+        drawing.add(new Circle(new Point(x, y), radius, color));
     }
 
     /**
@@ -72,7 +72,7 @@ public class AsciiPaint {
      * @param color is the color of the rectangle.
      */
     public void newRectangle(int x, int y, double width, double height, char color) {
-        drawing.addShape(new Rectangle(new Point(x, y), width, height, color));
+        drawing.add(new Rectangle(new Point(x, y), width, height, color));
     }
 
     /**
@@ -84,7 +84,7 @@ public class AsciiPaint {
      * @param color is the color of the square.
      */
     public void newSquare(int x, int y, double side, char color) {
-        drawing.addShape(new Square(new Point(x, y), side, color));
+        drawing.add(new Square(new Point(x, y), side, color));
     }
 
     /**
@@ -105,12 +105,32 @@ public class AsciiPaint {
     }
 
     /**
+     * Moves the shape containing the given point.
+     *
+     * @param x is the x position of the point contained by the shape to move.
+     * @param y is the y position of the point contained by the shape to move.
+     * @param dx is the difference added to the x position of the point
+     * contained by the shape to move.
+     * @param dy is the difference added to the y position of the point
+     * contained by the shape to move.
+     */
+    public void moveShapeAt(int x, int y, int dx, int dy) {
+        if (isBlankDrawing()) {
+            throw new IllegalStateException("No shape to move.");
+        }
+        drawing.getShapeAt(new Point(x, y)).move(dx, dy);
+    }
+
+    /**
      * Removes the given shape in the drawing.
      *
      * @param x is the x position of the point contained is the shape to remove.
      * @param y is the y position of the point contained is the shape to remove.
      */
     public void removeShapeAt(int x, int y) {
+        if (isBlankDrawing()) {
+            throw new IllegalStateException("No shape to remove.");
+        }
         drawing.remove(drawing.getShapeAt(new Point(x, y)));
     }
 

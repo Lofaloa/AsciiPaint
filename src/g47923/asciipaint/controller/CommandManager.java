@@ -22,7 +22,7 @@ class CommandManager {
      */
     public CommandManager(AsciiPaint asciipaint) {
         this.asciiPaint = asciipaint;
-        this.commandNames = new String[]{"add", "show", "remove", "exit"};
+        this.commandNames = new String[]{"add", "show", "remove", "move", "exit"};
         this.shapeNames = new String[]{"circle", "rectangle", "triangle", "square"};
     }
 
@@ -179,6 +179,20 @@ class CommandManager {
     }
 
     /**
+     * Moves the shape containing the given point.
+     *
+     * @param x is the x position of the point.
+     * @param y is the y position of the point.
+     * @param dx is the difference added to the x position of the shape to move.
+     * @param dy is the difference added to the y position of the shape to move.
+     * @throws IllegalArgumentException if there is no shape to move.
+     */
+    void moveShapeAt(String x, String y, String dx, String dy) {
+        asciiPaint.moveShapeAt(parseInt(x), parseInt(y), parseInt(dx),
+                parseInt(dy));
+    }
+
+    /**
      * Removes the shape containing the given point.
      *
      * @param x is the x position of the point.
@@ -186,9 +200,6 @@ class CommandManager {
      * @throws IllegalArgumentException if there is no shape to remove.
      */
     void removeShapeAt(String x, String y) {
-        if (asciiPaint.isBlankDrawing()) {
-            throw new IllegalStateException("No shape to remove.");
-        }
         asciiPaint.removeShapeAt(parseInt(x), parseInt(y));
     }
 
@@ -216,6 +227,13 @@ class CommandManager {
                             + " remove requires: x and y.");
                 }
                 removeShapeAt(tokens[1], tokens[2]);
+                break;
+            case "move":
+                if (tokens.length < 5) {
+                    throw new IllegalArgumentException("Not enough arguments, "
+                            + "move requires: x, y, dx, dy.");
+                }
+                moveShapeAt(tokens[1], tokens[2], tokens[3], tokens[4]);
                 break;
             case "show":
                 System.out.println(asciiPaint.asAscii());

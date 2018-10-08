@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>CommandManager.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;AsciiPaint&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">g47923.asciipaint.view</a> &gt; <span class="el_source">CommandManager.java</span></div><h1>CommandManager.java</h1><pre class="source lang-java linenums">package g47923.asciipaint.view;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>CommandManager.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;AsciiPaint&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">g47923.asciipaint.controller</a> &gt; <span class="el_source">CommandManager.java</span></div><h1>CommandManager.java</h1><pre class="source lang-java linenums">package g47923.asciipaint.controller;
 
 import g47923.asciipaint.model.AsciiPaint;
 import java.util.Arrays;
@@ -9,7 +9,7 @@ import static java.lang.Integer.parseInt;
  *
  * @author g47923
  */
-public class CommandManager {
+class CommandManager {
 
     private final AsciiPaint asciiPaint;
     private final String[] commandNames;
@@ -22,7 +22,7 @@ public class CommandManager {
      */
 <span class="fc" id="L23">    public CommandManager(AsciiPaint asciipaint) {</span>
 <span class="fc" id="L24">        this.asciiPaint = asciipaint;</span>
-<span class="fc" id="L25">        this.commandNames = new String[]{&quot;add&quot;, &quot;show&quot;, &quot;remove&quot;, &quot;exit&quot;};</span>
+<span class="fc" id="L25">        this.commandNames = new String[]{&quot;add&quot;, &quot;show&quot;, &quot;remove&quot;, &quot;move&quot;, &quot;exit&quot;};</span>
 <span class="fc" id="L26">        this.shapeNames = new String[]{&quot;circle&quot;, &quot;rectangle&quot;, &quot;triangle&quot;, &quot;square&quot;};</span>
 <span class="fc" id="L27">    }</span>
 
@@ -179,6 +179,20 @@ public class CommandManager {
 <span class="fc" id="L179">    }</span>
 
     /**
+     * Moves the shape containing the given point.
+     *
+     * @param x is the x position of the point.
+     * @param y is the y position of the point.
+     * @param dx is the difference added to the x position of the shape to move.
+     * @param dy is the difference added to the y position of the shape to move.
+     * @throws IllegalArgumentException if there is no shape to move.
+     */
+    void moveShapeAt(String x, String y, String dx, String dy) {
+<span class="nc" id="L191">        asciiPaint.moveShapeAt(parseInt(x), parseInt(y), parseInt(dx),</span>
+<span class="nc" id="L192">                parseInt(dy));</span>
+<span class="nc" id="L193">    }</span>
+
+    /**
      * Removes the shape containing the given point.
      *
      * @param x is the x position of the point.
@@ -186,11 +200,8 @@ public class CommandManager {
      * @throws IllegalArgumentException if there is no shape to remove.
      */
     void removeShapeAt(String x, String y) {
-<span class="fc bfc" id="L189" title="All 2 branches covered.">        if (asciiPaint.isBlankDrawing()) {</span>
-<span class="fc" id="L190">            throw new IllegalStateException(&quot;No shape to remove.&quot;);</span>
-        }
-<span class="fc" id="L192">        asciiPaint.removeShapeAt(parseInt(x), parseInt(y));</span>
-<span class="fc" id="L193">    }</span>
+<span class="fc" id="L203">        asciiPaint.removeShapeAt(parseInt(x), parseInt(y));</span>
+<span class="fc" id="L204">    }</span>
 
     /**
      * Executes the command entered by the user.
@@ -199,31 +210,38 @@ public class CommandManager {
      * @return true if the user ask for exiting the program.
      */
     public boolean executeCommand(String[] tokens) {
-<span class="nc bnc" id="L202" title="All 2 branches missed.">        if (tokens.length == 0) {</span>
-<span class="nc" id="L203">            throw new IllegalArgumentException(&quot;No tokens to parse.&quot;);</span>
+<span class="nc bnc" id="L213" title="All 2 branches missed.">        if (tokens.length == 0) {</span>
+<span class="nc" id="L214">            throw new IllegalArgumentException(&quot;No tokens to parse.&quot;);</span>
         }
-<span class="nc bnc" id="L205" title="All 14 branches missed.">        switch (requireCommandName(tokens[0])) {</span>
+<span class="nc bnc" id="L216" title="All 18 branches missed.">        switch (requireCommandName(tokens[0])) {</span>
             case &quot;add&quot;:
-<span class="nc bnc" id="L207" title="All 2 branches missed.">                if (tokens.length == 1) {</span>
-<span class="nc" id="L208">                    throw new IllegalArgumentException(&quot;add requires arguments.&quot;);</span>
+<span class="nc bnc" id="L218" title="All 2 branches missed.">                if (tokens.length == 1) {</span>
+<span class="nc" id="L219">                    throw new IllegalArgumentException(&quot;add requires arguments.&quot;);</span>
                 }
-<span class="nc" id="L210">                addNewShape(requireShapeName(tokens[1]),</span>
-<span class="nc" id="L211">                        Arrays.copyOfRange(tokens, 2, tokens.length));</span>
-<span class="nc" id="L212">                break;</span>
+<span class="nc" id="L221">                addNewShape(requireShapeName(tokens[1]),</span>
+<span class="nc" id="L222">                        Arrays.copyOfRange(tokens, 2, tokens.length));</span>
+<span class="nc" id="L223">                break;</span>
             case &quot;remove&quot;:
-<span class="nc bnc" id="L214" title="All 2 branches missed.">                if (tokens.length &lt; 3) {</span>
-<span class="nc" id="L215">                    throw new IllegalArgumentException(&quot;Not enough arguments,&quot;</span>
+<span class="nc bnc" id="L225" title="All 2 branches missed.">                if (tokens.length &lt; 3) {</span>
+<span class="nc" id="L226">                    throw new IllegalArgumentException(&quot;Not enough arguments,&quot;</span>
                             + &quot; remove requires: x and y.&quot;);
                 }
-<span class="nc" id="L218">                removeShapeAt(tokens[1], tokens[2]);</span>
-<span class="nc" id="L219">                break;</span>
+<span class="nc" id="L229">                removeShapeAt(tokens[1], tokens[2]);</span>
+<span class="nc" id="L230">                break;</span>
+            case &quot;move&quot;:
+<span class="nc bnc" id="L232" title="All 2 branches missed.">                if (tokens.length &lt; 5) {</span>
+<span class="nc" id="L233">                    throw new IllegalArgumentException(&quot;Not enough arguments, &quot;</span>
+                            + &quot;move requires: x, y, dx, dy.&quot;);
+                }
+<span class="nc" id="L236">                moveShapeAt(tokens[1], tokens[2], tokens[3], tokens[4]);</span>
+<span class="nc" id="L237">                break;</span>
             case &quot;show&quot;:
-<span class="nc" id="L221">                System.out.println(asciiPaint.asAscii());</span>
-<span class="nc" id="L222">                break;</span>
+<span class="nc" id="L239">                System.out.println(asciiPaint.asAscii());</span>
+<span class="nc" id="L240">                break;</span>
             default:
-<span class="nc" id="L224">                return true;</span>
+<span class="nc" id="L242">                return true;</span>
         }
-<span class="nc" id="L226">        return false;</span>
+<span class="nc" id="L244">        return false;</span>
     }
 
 }

@@ -1,6 +1,5 @@
 package g47923.asciipaint.controller;
 
-import g47923.asciipaint.controller.CommandManager;
 import g47923.asciipaint.model.AsciiPaint;
 import static org.junit.Assert.*;
 import org.junit.Test;

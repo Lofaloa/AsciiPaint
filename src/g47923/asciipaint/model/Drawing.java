@@ -84,8 +84,23 @@ class Drawing {
      *
      * @param shape is the shape to add.
      */
-    void addShape(Shape shape) {
+    void add(Shape shape) {
         shapes.add(shape);
+    }
+
+    /**
+     * Moves the given shape.
+     *
+     * @param shape is the shape to move.
+     * @param dx is the difference added to the x position.
+     * @param dy is the difference added to the y position.
+     */
+    void move(Shape shape, int dx, int dy) {
+        if (!shapes.contains(shape)) {
+            throw new IllegalArgumentException("The given shape has not been "
+                    + "added yet.");
+        }
+        shape.move(dx, dy);
     }
 
     /**
@@ -102,7 +117,7 @@ class Drawing {
      *
      * @param shapes are the shapes to add.
      */
-    void addAllShapes(Shape ...shapes) {
+    void addAllShapes(Shape... shapes) {
         this.shapes.addAll(Arrays.asList(shapes));
     }
 
