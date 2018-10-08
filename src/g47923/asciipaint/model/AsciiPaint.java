@@ -1,7 +1,5 @@
 package g47923.asciipaint.model;
 
-import java.util.ArrayList;
-
 /**
  * Represents the game.
  *
@@ -93,10 +91,10 @@ public class AsciiPaint {
         drawing.addAllShapes(new Triangle(new Point(x1, y1), new Point(x2, y2),
                 new Point(x3, y3), color));
     }
-    
+
     /**
      * Removes the given shape in the drawing.
-     * 
+     *
      * @param p is a point contained is the shape to remove.
      */
     public void removeShapeAt(Point p) {

@@ -1,6 +1,7 @@
 package g47923.asciipaint.view;
 
 import g47923.asciipaint.model.AsciiPaint;
+import g47923.asciipaint.model.Drawing;
 import g47923.asciipaint.model.Point;
 import java.util.Arrays;
 import static java.lang.Integer.parseInt;
@@ -13,6 +14,8 @@ import static java.lang.Integer.parseInt;
 public class CommandManager {
 
     private final AsciiPaint asciiPaint;
+    private final String[] commandNames;
+    private final String[] shapeNames;
 
     /**
      * Initializes this command manager with the given game.
@@ -21,6 +24,37 @@ public class CommandManager {
      */
     public CommandManager(AsciiPaint asciipaint) {
         this.asciiPaint = asciipaint;
+        this.commandNames = new String[]{"add", "show", "remove", "exit"};
+        this.shapeNames = new String[]{"circle", "rectangle", "triangle", "square"};
+    }
+
+    /**
+     * Gets the drawing of the Ascii Paint.
+     *
+     * @return the drawing of the Ascii Paint.
+     */
+    Drawing getDrawing() {
+        return this.asciiPaint.getDrawing();
+    }
+
+    /**
+     * Tells if the given string is a command name.
+     *
+     * @param str is the string to analyze.
+     * @return true if the given string is a command name.
+     */
+    boolean isCommandName(String str) {
+        return Arrays.asList(commandNames).contains(str);
+    }
+
+    /**
+     * Tells if the given string is a shape name.
+     *
+     * @param str is the string to analyze.
+     * @return true if the given string is a shape name.
+     */
+    boolean isShapeName(String str) {
+        return Arrays.asList(shapeNames).contains(str);
     }
 
     /**
@@ -42,8 +76,7 @@ public class CommandManager {
      * @throws IllegalArgumentException if the given string is not a command.
      */
     String requireCommandName(String str) {
-        if (!str.equals("show") && !str.equals("add") && !str.equals("exit")
-                && !str.equals("remove")) {
+        if (!isCommandName(str)) {
             throw new IllegalArgumentException("\"" + str + "\" is not "
                     + "a command.");
         }
@@ -59,8 +92,7 @@ public class CommandManager {
      * @throws IllegalArgumentException if the given string is not a shape name.
      */
     String requireShapeName(String str) {
-        if (!str.equals("circle") && !str.equals("rectangle")
-                && !str.equals("square") && !str.equals("triangle")) {
+        if (!isShapeName(str)) {
             throw new IllegalArgumentException("\"" + str + "\" is not "
                     + "a valid shape name.");
         }
@@ -87,7 +119,7 @@ public class CommandManager {
      *
      * @param args are the characteristics of the added square.
      * @throws IllegalArgumentException if args lacks required argument.
-
+     *
      */
     void addNewSquare(String[] args) {
         if (args.length < 4) {
@@ -103,7 +135,7 @@ public class CommandManager {
      *
      * @param args are the characteristics of the added circle.
      * @throws IllegalArgumentException if args lacks required argument.
-
+     *
      */
     void addNewCircle(String[] args) {
         if (args.length < 4) {
@@ -164,22 +196,20 @@ public class CommandManager {
      * @param y is the y position of the point.
      * @throws IllegalArgumentException if there is no shape to remove.
      */
-    public void removeShapeAt(String x, String y) {
+    void removeShapeAt(String x, String y) {
         if (asciiPaint.getDrawing().getShapes().isEmpty()) {
             throw new IllegalStateException("No shape to remove.");
         }
         asciiPaint.removeShapeAt(new Point(Integer.parseInt(x), Integer.parseInt(y)));
     }
 
-    
-    
     /**
-     * Runs the command entered by the user.
+     * Executes the command entered by the user.
      *
      * @param tokens are the tokens forming the command to run.
      * @return true if the user ask for exiting the program.
      */
-    public boolean runCommand(String[] tokens) {
+    public boolean executeCommand(String[] tokens) {
         if (tokens.length == 0) {
             throw new IllegalArgumentException("No tokens to parse.");
         }

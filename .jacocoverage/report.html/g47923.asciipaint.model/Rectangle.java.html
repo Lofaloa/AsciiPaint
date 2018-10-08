@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Rectangle.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;AsciiPaint&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">g47923.asciipaint.model</a> &gt; <span class="el_source">Rectangle.java</span></div><h1>Rectangle.java</h1><pre class="source lang-java linenums">package g47923.asciipaint.model;
+
+/**
+ * Represents a rectangle.
+ *
+ * @author g47923
+ */
+public class Rectangle extends ColoredShape {
+
+    private Point upperLeft;
+    private double width;
+    private double height;
+
+    /**
+     * Initializes this Rectangle the the given position, width, height and
+     * color.
+     *
+     * @param upperLeft is the upper left point of this rectangle.
+     * @param width is the width of this rectangle.
+     * @param height is the height of this rectangle.
+     * @param color is the color of this rectangle.
+     */
+    public Rectangle(Point upperLeft, double width, double height, char color) {
+<span class="fc" id="L24">        super(color);</span>
+<span class="fc bfc" id="L25" title="All 2 branches covered.">        if (height &lt; 0) {</span>
+<span class="fc" id="L26">            throw new IllegalArgumentException(height + &quot; is not valid, the height&quot;</span>
+                    + &quot; should be positive.&quot;);
+        }
+<span class="fc bfc" id="L29" title="All 2 branches covered.">        if (width &lt; 0) {</span>
+<span class="fc" id="L30">            throw new IllegalArgumentException(width + &quot; is not valid, the width&quot;</span>
+                    + &quot; should be positive.&quot;);
+        }
+<span class="fc" id="L33">        this.upperLeft = new Point(upperLeft.getX(), upperLeft.getY());</span>
+<span class="fc" id="L34">        this.width = width;</span>
+<span class="fc" id="L35">        this.height = height;</span>
+<span class="fc" id="L36">    }</span>
+
+    /**
+     * Gets the upperLeft point of this rectangle.
+     *
+     * @return the upperLeft point of this rectangle.
+     */
+    Point getUpperLeft() {
+<span class="fc" id="L44">        return new Point(upperLeft.getX(), upperLeft.getY());</span>
+    }
+
+    /**
+     * Gets the width of this rectangle.
+     *
+     * @return the width of this rectangle.
+     */
+    double getWidth() {
+<span class="fc" id="L53">        return width;</span>
+    }
+
+    /**
+     * Gets the height of this rectangle.
+     *
+     * @return the height of this rectangle.
+     */
+    double getHeight() {
+<span class="fc" id="L62">        return height;</span>
+    }
+
+    @Override
+    public void move(double dx, double dy) {
+<span class="fc" id="L67">        this.upperLeft.move(dx, dy);</span>
+<span class="fc" id="L68">    }</span>
+
+    @Override
+    public boolean isInside(Point p) {
+<span class="fc bfc" id="L72" title="All 4 branches covered.">        return upperLeft.getX() &lt;= p.getX() &amp;&amp; p.getX() &lt;= upperLeft.getX() + width</span>
+<span class="fc bfc" id="L73" title="All 4 branches covered.">                &amp;&amp; upperLeft.getY() &lt;= p.getY() &amp;&amp; p.getY() &lt;= upperLeft.getY() + height;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

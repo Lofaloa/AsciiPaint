@@ -34,7 +34,7 @@ public class Controller {
             view.printPrompt();
             String[] line = commandMangager.splitLine(view.readLine());
             try {
-                isOver = commandMangager.runCommand(line);
+                isOver = commandMangager.executeCommand(line);
             } catch (IllegalArgumentException | IllegalStateException ex) {
                 System.out.println(ex.getMessage());
             }
