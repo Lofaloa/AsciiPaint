@@ -16,12 +16,6 @@ public class DrawingTest {
         assertTrue(d.getWidth() == 100 && d.getHeight() == 30);
     }
 
-    @Test
-    public void drawingInitializationNoGivenWidthAndHeight() {
-        Drawing d = new Drawing();
-        assertTrue(d.getWidth() == 50 && d.getHeight() == 50);
-    }
-
     @Test(expected = IllegalArgumentException.class)
     public void drawingInitializationNegativeWidth() {
         new Drawing(-100, 30);
@@ -37,7 +31,7 @@ public class DrawingTest {
      */
     @Test
     public void getShapes() {
-        Drawing d = new Drawing();
+        Drawing d = new Drawing(100, 30);
         Shape square = new Square(new Point(), 5, 'x');
         Shape circle = new Circle(new Point(3, 2), 5, 'x');
         Shape rectangle = new Rectangle(new Point(1, 3), 5, 4, 'x');
@@ -76,7 +70,7 @@ public class DrawingTest {
         assertTrue(1 == d.getShapes().size()
                 && d.getShapes().get(0) instanceof Square);
     }
-    
+
     @Test
     public void removeShape() {
         Drawing d = new Drawing(100, 30);

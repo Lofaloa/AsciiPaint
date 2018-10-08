@@ -11,9 +11,9 @@ import java.util.List;
  */
 class Drawing {
 
-    private List<Shape> shapes;
-    private int height;
-    private int width;
+    private final List<Shape> shapes;
+    private final int height;
+    private final int width;
 
     /**
      * Initializes this drawing with the given width and height. It is initially
@@ -37,18 +37,11 @@ class Drawing {
     }
 
     /**
-     * Initializes this drawing with a width and a height of 50.
-     */
-    public Drawing() {
-        this(50, 50);
-    }
-
-    /**
      * Gets the shape of this drawing.
      *
      * @return the shape of this drawing.
      */
-    public List<Shape> getShapes() {
+    List<Shape> getShapes() {
         return new ArrayList<>(shapes);
     }
 
@@ -77,7 +70,7 @@ class Drawing {
      * @return the shape containing the given point, if no shape is found null
      * is returned.
      */
-    public Shape getShapeAt(Point p) {
+    Shape getShapeAt(Point p) {
         for (Shape shape : shapes) {
             if (shape.isInside(p)) {
                 return shape;
@@ -91,7 +84,7 @@ class Drawing {
      *
      * @param shape is the shape to add.
      */
-    public void addShape(Shape shape) {
+    void addShape(Shape shape) {
         shapes.add(shape);
     }
 
@@ -100,7 +93,7 @@ class Drawing {
      *
      * @param shape is the shape to remove.
      */
-    public void remove(Shape shape) {
+    void remove(Shape shape) {
         shapes.remove(shape);
     }
 
