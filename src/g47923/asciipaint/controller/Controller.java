@@ -1,7 +1,6 @@
 package g47923.asciipaint.controller;
 
 import g47923.asciipaint.model.AsciiPaint;
-import g47923.asciipaint.view.CommandManager;
 import g47923.asciipaint.view.View;
 
 /**

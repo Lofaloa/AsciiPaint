@@ -1,4 +1,4 @@
-package g47923.asciipaint.view;
+package g47923.asciipaint.controller;
 
 import g47923.asciipaint.model.AsciiPaint;
 import java.util.Arrays;
@@ -9,7 +9,7 @@ import static java.lang.Integer.parseInt;
  *
  * @author g47923
  */
-public class CommandManager {
+class CommandManager {
 
     private final AsciiPaint asciiPaint;
     private final String[] commandNames;
