@@ -2,14 +2,13 @@
 
 import g47923.asciipaint.controller.Controller;
 import g47923.asciipaint.model.AsciiPaint;
-import g47923.asciipaint.model.Drawing;
 
 /**
  * Entry point of the game.
  *
  * @author g47923
  */
-<span class="nc" id="L12">public class Application {</span>
+<span class="nc" id="L11">public class Application {</span>
 
     /**
      * Starts the program.
@@ -18,37 +17,37 @@ import g47923.asciipaint.model.Drawing;
      * the drawing is initialized with default size.
      */
     public static void main(String[] args) {
-<span class="nc bnc" id="L21" title="All 4 branches missed.">        if (args.length == 1 || args.length &gt; 2) {</span>
-<span class="nc" id="L22">            System.out.println(&quot;usage: none or two arguments are required.&quot;);</span>
-<span class="nc" id="L23">            System.exit(-1);</span>
+<span class="nc bnc" id="L20" title="All 4 branches missed.">        if (args.length == 1 || args.length &gt; 2) {</span>
+<span class="nc" id="L21">            System.out.println(&quot;usage: none or two arguments are required.&quot;);</span>
+<span class="nc" id="L22">            System.exit(-1);</span>
         }
-<span class="nc bnc" id="L25" title="All 2 branches missed.">        if (args.length == 0) {</span>
-<span class="nc" id="L26">            startDefault();</span>
-<span class="nc" id="L27">            System.exit(-2);</span>
+<span class="nc bnc" id="L24" title="All 2 branches missed.">        if (args.length == 0) {</span>
+<span class="nc" id="L25">            startDefault();</span>
+<span class="nc" id="L26">            System.exit(-2);</span>
         }
         try {
-<span class="nc" id="L30">            int width = Integer.parseInt(args[0]);</span>
-<span class="nc" id="L31">            int height = Integer.parseInt(args[1]);</span>
-<span class="nc" id="L32">            startCustom(width, height);</span>
+<span class="nc" id="L29">            int width = Integer.parseInt(args[0]);</span>
+<span class="nc" id="L30">            int height = Integer.parseInt(args[1]);</span>
+<span class="nc" id="L31">            startCustom(width, height);</span>
 
-<span class="nc" id="L34">        } catch (NumberFormatException ex) {</span>
-<span class="nc" id="L35">            System.err.println(&quot;usage: invalid arguments, it should be the width&quot;</span>
+<span class="nc" id="L33">        } catch (NumberFormatException ex) {</span>
+<span class="nc" id="L34">            System.err.println(&quot;usage: invalid arguments, it should be the width&quot;</span>
                     + &quot; and height of the drawing.&quot;);
-<span class="nc" id="L37">        } catch (IllegalArgumentException ex) {</span>
-<span class="nc" id="L38">            System.err.println(ex.getMessage());</span>
-<span class="nc" id="L39">        }</span>
+<span class="nc" id="L36">        } catch (IllegalArgumentException ex) {</span>
+<span class="nc" id="L37">            System.err.println(ex.getMessage());</span>
+<span class="nc" id="L38">        }</span>
 
-<span class="nc" id="L41">    }</span>
+<span class="nc" id="L40">    }</span>
 
     /**
      * Starts this program with default width and height for the drawing. By
      * default, the drawing is 50 x 50.
      */
     public static void startDefault() {
-<span class="nc" id="L48">        AsciiPaint asciiPaint = new AsciiPaint(new Drawing());</span>
-<span class="nc" id="L49">        Controller c = new Controller(asciiPaint);</span>
-<span class="nc" id="L50">        c.start();</span>
-<span class="nc" id="L51">    }</span>
+<span class="nc" id="L47">        AsciiPaint asciiPaint = new AsciiPaint();</span>
+<span class="nc" id="L48">        Controller c = new Controller(asciiPaint);</span>
+<span class="nc" id="L49">        c.start();</span>
+<span class="nc" id="L50">    }</span>
 
     /**
      * Starts this program with custom width and height for the drawing.
@@ -57,10 +56,10 @@ import g47923.asciipaint.model.Drawing;
      * @param height is the height of the drawing.
      */
     public static void startCustom(int width, int height) {
-<span class="nc" id="L60">        AsciiPaint asciiPaint = new AsciiPaint(new Drawing(width, height));</span>
-<span class="nc" id="L61">        Controller c = new Controller(asciiPaint);</span>
-<span class="nc" id="L62">        c.start();</span>
-<span class="nc" id="L63">    }</span>
+<span class="nc" id="L59">        AsciiPaint asciiPaint = new AsciiPaint(width, height);</span>
+<span class="nc" id="L60">        Controller c = new Controller(asciiPaint);</span>
+<span class="nc" id="L61">        c.start();</span>
+<span class="nc" id="L62">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

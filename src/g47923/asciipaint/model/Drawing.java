@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @author g47923
  */
-public class Drawing {
+class Drawing {
 
     private List<Shape> shapes;
     private int height;
@@ -94,10 +94,10 @@ public class Drawing {
     public void addShape(Shape shape) {
         shapes.add(shape);
     }
-    
+
     /**
      * Removes the given shape from this drawing.
-     * 
+     *
      * @param shape is the shape to remove.
      */
     public void remove(Shape shape) {

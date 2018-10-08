@@ -10,23 +10,26 @@ public class AsciiPaint {
     private final Drawing drawing;
 
     /**
-     * Initializes this game with a empty blank drawing of 50 x 50;
+     * Initializes this game with a given blank drawing.
+     *
+     * @param width is the width of the drawing.
+     * @param height is the height of the drawing.
+     * @throws IllegalArgumentException if the given width and height are not
+     * positive.
      */
-    public AsciiPaint() {
-        this.drawing = new Drawing();
+    public AsciiPaint(int width, int height) {
+        if (width < 0 || height < 0) {
+            throw new IllegalArgumentException(width + " x " + height + " is not a"
+                    + " valid dimension, width and height should be positive.");
+        }
+        this.drawing = new Drawing(width, height);
     }
 
     /**
-     * Initializes this game with a given blank drawing.
-     *
-     * @param drawing is the drawing of this game.
-     * @throws IllegalArgumentException if the given drawing is not empty.
+     * Initializes this game with a empty blank drawing of 50 x 50;
      */
-    public AsciiPaint(Drawing drawing) {
-        if (!drawing.getShapes().isEmpty()) {
-            throw new IllegalArgumentException("The drawing should be empty.");
-        }
-        this.drawing = new Drawing(drawing.getHeight(), drawing.getWidth());
+    public AsciiPaint() {
+        this(50, 50);
     }
 
     /**
@@ -36,6 +39,15 @@ public class AsciiPaint {
      */
     public Drawing getDrawing() {
         return drawing;
+    }
+
+    /**
+     * Tells if the drawing of this ascii paint is blank.
+     *
+     * @return true if the drawing of ascii paint is blank.
+     */
+    public boolean isBlankDrawing() {
+        return drawing.getShapes().isEmpty();
     }
 
     /**
@@ -87,7 +99,7 @@ public class AsciiPaint {
      * @param color is the color of the new triangle.
      */
     public void newTriangle(int x1, int y1, int x2, int y2, int x3, int y3,
-             char color) {
+            char color) {
         drawing.addAllShapes(new Triangle(new Point(x1, y1), new Point(x2, y2),
                 new Point(x3, y3), color));
     }
@@ -95,10 +107,11 @@ public class AsciiPaint {
     /**
      * Removes the given shape in the drawing.
      *
-     * @param p is a point contained is the shape to remove.
+     * @param x is the x position of the point contained is the shape to remove.
+     * @param y is the y position of the point contained is the shape to remove.
      */
-    public void removeShapeAt(Point p) {
-        drawing.remove(drawing.getShapeAt(p));
+    public void removeShapeAt(int x, int y) {
+        drawing.remove(drawing.getShapeAt(new Point(x, y)));
     }
 
     /**

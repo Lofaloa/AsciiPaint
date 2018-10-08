@@ -2,16 +2,16 @@
 
 /**
  * Represents a colored shape.
- * 
+ *
  * @author g47923
  */
-public abstract class ColoredShape implements Shape{
-    
+abstract class ColoredShape implements Shape{
+
     private char color;
 
     /**
      * Initializes this colored shape with the given color.
-     * 
+     *
      * @param color is color of this colored shape.
      */
 <span class="fc" id="L17">    public ColoredShape(char color) {</span>
@@ -20,7 +20,7 @@ public abstract class ColoredShape implements Shape{
 
     /**
      * Gets this colored shape color.
-     * 
+     *
      * @return this colored shape color.
      */
     @Override
@@ -30,12 +30,12 @@ public abstract class ColoredShape implements Shape{
 
     /**
      * Sets this colored shape color to the given one.
-     * 
+     *
      * @param color is the color of this colored shape.
      */
     public void setColor(char color) {
 <span class="nc" id="L37">        this.color = color;</span>
 <span class="nc" id="L38">    }</span>
-    
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

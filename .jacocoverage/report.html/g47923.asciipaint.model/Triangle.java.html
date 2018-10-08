@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @author g47923
  */
-public class Triangle extends ColoredShape {
+class Triangle extends ColoredShape {
 
     private final List&lt;Point&gt; corners;
 
@@ -62,17 +62,17 @@ public class Triangle extends ColoredShape {
 <span class="fc" id="L62">            corner.move(dx, dy);</span>
 <span class="fc" id="L63">        }</span>
 <span class="fc" id="L64">    }</span>
-    
+
     /**
-     * Gets the surface for the given vertices. 
-     * 
+     * Gets the surface for the given vertices.
+     *
      * @param a is a point of a triangle.
      * @param b is a point of a triangle.
      * @param c is a point of a triangle.
      * @return the surface a of the given triangle.
      */
     double surface(Point a, Point b, Point c) {
-<span class="fc" id="L75">        return Math.abs((a.getX() * (b.getY() - c.getY()) </span>
+<span class="fc" id="L75">        return Math.abs((a.getX() * (b.getY() - c.getY())</span>
 <span class="fc" id="L76">                + b.getX() * (c.getY() - a.getY())</span>
 <span class="fc" id="L77">                + c.getX() * (a.getY() - b.getY())) / 2.0);</span>
     }

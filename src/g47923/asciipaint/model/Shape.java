@@ -5,7 +5,7 @@ package g47923.asciipaint.model;
  *
  * @author g47923
  */
-public interface Shape {
+interface Shape {
 
     /**
      * Moves this Shape.

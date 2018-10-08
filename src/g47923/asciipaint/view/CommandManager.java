@@ -1,8 +1,6 @@
 package g47923.asciipaint.view;
 
 import g47923.asciipaint.model.AsciiPaint;
-import g47923.asciipaint.model.Drawing;
-import g47923.asciipaint.model.Point;
 import java.util.Arrays;
 import static java.lang.Integer.parseInt;
 
@@ -26,15 +24,6 @@ public class CommandManager {
         this.asciiPaint = asciipaint;
         this.commandNames = new String[]{"add", "show", "remove", "exit"};
         this.shapeNames = new String[]{"circle", "rectangle", "triangle", "square"};
-    }
-
-    /**
-     * Gets the drawing of the Ascii Paint.
-     *
-     * @return the drawing of the Ascii Paint.
-     */
-    Drawing getDrawing() {
-        return this.asciiPaint.getDrawing();
     }
 
     /**
@@ -197,10 +186,10 @@ public class CommandManager {
      * @throws IllegalArgumentException if there is no shape to remove.
      */
     void removeShapeAt(String x, String y) {
-        if (asciiPaint.getDrawing().getShapes().isEmpty()) {
+        if (asciiPaint.isBlankDrawing()) {
             throw new IllegalStateException("No shape to remove.");
         }
-        asciiPaint.removeShapeAt(new Point(Integer.parseInt(x), Integer.parseInt(y)));
+        asciiPaint.removeShapeAt(parseInt(x), parseInt(y));
     }
 
     /**

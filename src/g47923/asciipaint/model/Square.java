@@ -5,7 +5,7 @@ package g47923.asciipaint.model;
  *
  * @author Logan
  */
-public class Square extends Rectangle {
+class Square extends Rectangle {
 
     /**
      * Initializes this square to the given upper left corner, side and color.

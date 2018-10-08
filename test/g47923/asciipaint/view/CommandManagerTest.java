@@ -1,10 +1,6 @@
 package g47923.asciipaint.view;
 
 import g47923.asciipaint.model.AsciiPaint;
-import g47923.asciipaint.model.Circle;
-import g47923.asciipaint.model.Rectangle;
-import g47923.asciipaint.model.Square;
-import g47923.asciipaint.model.Triangle;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
@@ -84,9 +80,10 @@ public class CommandManagerTest {
 
     @Test
     public void addNewCircle() {
-        CommandManager cm = new CommandManager(new AsciiPaint());
+        AsciiPaint ap = new AsciiPaint();
+        CommandManager cm = new CommandManager(ap);
         cm.addNewCircle(new String[]{"0", "0", "2", "c"});
-        assertTrue(cm.getDrawing().getShapes().get(0) instanceof Circle);
+        assertFalse(ap.isBlankDrawing());
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -97,9 +94,10 @@ public class CommandManagerTest {
 
     @Test
     public void addNewRectangle() {
-        CommandManager cm = new CommandManager(new AsciiPaint());
+        AsciiPaint ap = new AsciiPaint();
+        CommandManager cm = new CommandManager(ap);
         cm.addNewRectangle(new String[]{"0", "0", "2", "3", "c"});
-        assertTrue(cm.getDrawing().getShapes().get(0) instanceof Rectangle);
+        assertFalse(ap.isBlankDrawing());
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -110,9 +108,10 @@ public class CommandManagerTest {
 
     @Test
     public void addNewSquare() {
-        CommandManager cm = new CommandManager(new AsciiPaint());
+        AsciiPaint ap = new AsciiPaint();
+        CommandManager cm = new CommandManager(ap);
         cm.addNewSquare(new String[]{"0", "0", "2", "c"});
-        assertTrue(cm.getDrawing().getShapes().get(0) instanceof Square);
+        assertFalse(ap.isBlankDrawing());
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -123,9 +122,10 @@ public class CommandManagerTest {
 
     @Test
     public void addNewTriangle() {
-        CommandManager cm = new CommandManager(new AsciiPaint());
+        AsciiPaint ap = new AsciiPaint();
+        CommandManager cm = new CommandManager(ap);
         cm.addNewTriangle(new String[]{"0", "0", "1", "2", "3", "4", "t"});
-        assertTrue(cm.getDrawing().getShapes().get(0) instanceof Triangle);
+        assertFalse(ap.isBlankDrawing());
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -136,30 +136,34 @@ public class CommandManagerTest {
 
     @Test
     public void addNewShape_ShapeIsACircle() {
-        CommandManager cm = new CommandManager(new AsciiPaint());
+        AsciiPaint ap = new AsciiPaint();
+        CommandManager cm = new CommandManager(ap);
         cm.addNewShape("circle", new String[]{"0", "0", "2", "c"});
-        assertTrue(cm.getDrawing().getShapes().get(0) instanceof Circle);
+        assertFalse(ap.isBlankDrawing());
     }
 
     @Test
     public void addNewShape_ShapeIsARectangle() {
-        CommandManager cm = new CommandManager(new AsciiPaint());
+        AsciiPaint ap = new AsciiPaint();
+        CommandManager cm = new CommandManager(ap);
         cm.addNewShape("rectangle", new String[]{"0", "0", "2", "3", "c"});
-        assertTrue(cm.getDrawing().getShapes().get(0) instanceof Rectangle);
+        assertFalse(ap.isBlankDrawing());
     }
 
     @Test
     public void addNewShape_ShapeIsASquare() {
-        CommandManager cm = new CommandManager(new AsciiPaint());
+        AsciiPaint ap = new AsciiPaint();
+        CommandManager cm = new CommandManager(ap);
         cm.addNewShape("square", new String[]{"0", "0", "2", "c"});
-        assertTrue(cm.getDrawing().getShapes().get(0) instanceof Square);
+        assertFalse(ap.isBlankDrawing());
     }
 
     @Test
     public void addNewShape_ShapeIsATriangle() {
-        CommandManager cm = new CommandManager(new AsciiPaint());
+        AsciiPaint ap = new AsciiPaint();
+        CommandManager cm = new CommandManager(ap);
         cm.addNewShape("triangle", new String[]{"0", "0", "1", "2", "3", "4", "t"});
-        assertTrue(cm.getDrawing().getShapes().get(0) instanceof Triangle);
+        assertFalse(ap.isBlankDrawing());
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -170,17 +174,17 @@ public class CommandManagerTest {
 
     @Test
     public void removeShapeAt() {
-        CommandManager cm = new CommandManager(new AsciiPaint());
+        AsciiPaint ap = new AsciiPaint();
+        CommandManager cm = new CommandManager(ap);
         cm.addNewShape("rectangle", new String[]{"0", "0", "2", "3", "c"});
         cm.removeShapeAt("0", "0");
-        assertTrue(cm.getDrawing().getShapes().isEmpty());
+        assertTrue(ap.isBlankDrawing());
     }
 
     @Test(expected = IllegalStateException.class)
     public void removeShapeAtNoShapes() {
         CommandManager cm = new CommandManager(new AsciiPaint());
         cm.removeShapeAt("0", "0");
-        assertTrue(cm.getDrawing().getShapes().isEmpty());
     }
 
 }

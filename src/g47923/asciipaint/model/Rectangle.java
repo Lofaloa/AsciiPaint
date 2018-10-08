@@ -5,7 +5,7 @@ package g47923.asciipaint.model;
  *
  * @author g47923
  */
-public class Rectangle extends ColoredShape {
+class Rectangle extends ColoredShape {
 
     private Point upperLeft;
     private double width;

@@ -2,7 +2,6 @@ package g47923.asciipaint;
 
 import g47923.asciipaint.controller.Controller;
 import g47923.asciipaint.model.AsciiPaint;
-import g47923.asciipaint.model.Drawing;
 
 /**
  * Entry point of the game.
@@ -45,7 +44,7 @@ public class Application {
      * default, the drawing is 50 x 50.
      */
     public static void startDefault() {
-        AsciiPaint asciiPaint = new AsciiPaint(new Drawing());
+        AsciiPaint asciiPaint = new AsciiPaint();
         Controller c = new Controller(asciiPaint);
         c.start();
     }
@@ -57,7 +56,7 @@ public class Application {
      * @param height is the height of the drawing.
      */
     public static void startCustom(int width, int height) {
-        AsciiPaint asciiPaint = new AsciiPaint(new Drawing(width, height));
+        AsciiPaint asciiPaint = new AsciiPaint(width, height);
         Controller c = new Controller(asciiPaint);
         c.start();
     }

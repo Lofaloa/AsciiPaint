@@ -5,7 +5,7 @@ package g47923.asciipaint.model;
  *
  * @author g47923
  */
-public class Point {
+class Point {
 
     private double x;
     private double y;
@@ -59,12 +59,12 @@ public class Point {
 
     /**
      * Gets the distance between this point and an other.
-     * 
+     *
      * @param other is the point to evaluate the distance to.
      * @return the distance between this point and an other.
      */
     double distanceTo(Point other) {
-        return Math.sqrt(Math.pow(other.getX() - x, 2) 
+        return Math.sqrt(Math.pow(other.getX() - x, 2)
                 + Math.pow((other.getY() - y), 2));
     }
 
