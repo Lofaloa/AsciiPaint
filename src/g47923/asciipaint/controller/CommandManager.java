@@ -2,6 +2,7 @@ package g47923.asciipaint.controller;
 
 import g47923.asciipaint.model.AsciiPaint;
 import java.util.Arrays;
+import g47923.asciipaint.view.View;
 import static java.lang.Integer.parseInt;
 
 /**
@@ -22,7 +23,8 @@ class CommandManager {
      */
     public CommandManager(AsciiPaint asciipaint) {
         this.asciiPaint = asciipaint;
-        this.commandNames = new String[]{"add", "show", "remove", "move", "exit"};
+        this.commandNames = new String[]{"add", "show", "remove", "move", "exit",
+            "help"};
         this.shapeNames = new String[]{"circle", "rectangle", "triangle", "square"};
     }
 
@@ -65,7 +67,7 @@ class CommandManager {
      * @throws IllegalArgumentException if the given string is not a command.
      */
     String requireCommandName(String str) {
-        if (!isCommandName(str)) {
+        if (!isCommandName(str.toLowerCase())) {
             throw new IllegalArgumentException("\"" + str + "\" is not "
                     + "a command.");
         }
@@ -81,7 +83,7 @@ class CommandManager {
      * @throws IllegalArgumentException if the given string is not a shape name.
      */
     String requireShapeName(String str) {
-        if (!isShapeName(str)) {
+        if (!isShapeName(str.toLowerCase())) {
             throw new IllegalArgumentException("\"" + str + "\" is not "
                     + "a valid shape name.");
         }
@@ -234,6 +236,9 @@ class CommandManager {
                             + "move requires: x, y, dx, dy.");
                 }
                 moveShapeAt(tokens[1], tokens[2], tokens[3], tokens[4]);
+                break;
+            case "help":
+                new View(asciiPaint).printHelp();
                 break;
             case "show":
                 System.out.println(asciiPaint.asAscii());

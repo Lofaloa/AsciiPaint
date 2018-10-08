@@ -35,6 +35,17 @@ public class View {
         System.out.print("> ");
     }
 
+    public void printHelp() {
+        String help = "COMMAND     USAGE                                         ACTION\n"
+                    + "add         add [shape] [arguments]]                      Adds a shape to the drawing.\n"
+                    + "move        move [x of shape] [y of shape] [dx] [dy]      Moves the pointed shape.\n"
+                    + "remove      remove [x of shape] [y of shape] [dx] [dy]    Removes the pointed shape.\n"
+                    + "show        show                                          Shows the current state of the drawing.\n"
+                    + "exit        exit                                          Exits Ascii Paint.\n"
+                    + "help        help                                          Shows help.";
+        System.out.println(help);
+    }
+
     /**
      * Reads the current line.
      *
@@ -46,7 +57,7 @@ public class View {
             printPrompt();
             line =  in.nextLine();
         }
-        return line;     
+        return line;
     }
 
 }

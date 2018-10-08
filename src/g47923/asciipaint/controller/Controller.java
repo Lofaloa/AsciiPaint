@@ -29,6 +29,7 @@ public class Controller {
     public void start() {
         boolean isOver = false;
         view.printTitle();
+        view.printHelp();
         while (!isOver) {
             view.printPrompt();
             String[] line = commandMangager.splitLine(view.readLine());
