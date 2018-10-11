@@ -35,6 +35,9 @@ public class View {
         System.out.print("> ");
     }
 
+    /**
+     * Prints an help for the user.
+     */
     public void printHelp() {
         String help = "COMMAND     USAGE                                         ACTION\n"
                     + "add         add [shape] [arguments]]                      Adds a shape to the drawing.\n"

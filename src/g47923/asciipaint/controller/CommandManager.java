@@ -4,6 +4,7 @@ import g47923.asciipaint.model.AsciiPaint;
 import java.util.Arrays;
 import g47923.asciipaint.view.View;
 import static java.lang.Integer.parseInt;
+import java.util.Locale;
 
 /**
  * Manages the commands.
@@ -67,7 +68,7 @@ class CommandManager {
      * @throws IllegalArgumentException if the given string is not a command.
      */
     String requireCommandName(String str) {
-        if (!isCommandName(str.toLowerCase())) {
+        if (!isCommandName(str.toLowerCase(Locale.getDefault()))) {
             throw new IllegalArgumentException("\"" + str + "\" is not "
                     + "a command.");
         }
@@ -83,7 +84,7 @@ class CommandManager {
      * @throws IllegalArgumentException if the given string is not a shape name.
      */
     String requireShapeName(String str) {
-        if (!isShapeName(str.toLowerCase())) {
+        if (!isShapeName(str.toLowerCase(Locale.getDefault()))) {
             throw new IllegalArgumentException("\"" + str + "\" is not "
                     + "a valid shape name.");
         }

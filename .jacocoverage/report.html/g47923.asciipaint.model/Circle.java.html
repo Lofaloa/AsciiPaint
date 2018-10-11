@@ -18,14 +18,14 @@ class Circle extends ColoredShape {
      * @param color is the color of this radius.
      */
     public Circle(Point center, double radius, char color) {
-<span class="fc" id="L21">        super(color);</span>
-<span class="fc bfc" id="L22" title="All 2 branches covered.">        if (radius &lt; 0) {</span>
-<span class="fc" id="L23">            throw new IllegalArgumentException(radius + &quot; is not a valid radius&quot;</span>
+<span class="nc" id="L21">        super(color);</span>
+<span class="nc bnc" id="L22" title="All 2 branches missed.">        if (radius &lt; 0) {</span>
+<span class="nc" id="L23">            throw new IllegalArgumentException(radius + &quot; is not a valid radius&quot;</span>
                     + &quot;, it should be positive.&quot;);
         }
-<span class="fc" id="L26">        this.center = new Point(center.getX(), center.getY());</span>
-<span class="fc" id="L27">        this.radius = radius;</span>
-<span class="fc" id="L28">    }</span>
+<span class="nc" id="L26">        this.center = new Point(center.getX(), center.getY());</span>
+<span class="nc" id="L27">        this.radius = radius;</span>
+<span class="nc" id="L28">    }</span>
 
     /**
      * Gets the center of this Circle.
@@ -33,7 +33,7 @@ class Circle extends ColoredShape {
      * @return the center of this Circle.
      */
     Point getCenter() {
-<span class="fc" id="L36">        return new Point(center.getX(), center.getY());</span>
+<span class="nc" id="L36">        return new Point(center.getX(), center.getY());</span>
     }
 
     /**
@@ -42,17 +42,17 @@ class Circle extends ColoredShape {
      * @return the radius of this circle.
      */
     double getRadius() {
-<span class="fc" id="L45">        return radius;</span>
+<span class="nc" id="L45">        return radius;</span>
     }
 
     @Override
     public void move(double dx, double dy) {
-<span class="fc" id="L50">        center.move(dx, dy);</span>
-<span class="fc" id="L51">    }</span>
+<span class="nc" id="L50">        center.move(dx, dy);</span>
+<span class="nc" id="L51">    }</span>
 
     @Override
     public boolean isInside(Point p) {
-<span class="fc bfc" id="L55" title="All 2 branches covered.">        return center.distanceTo(p) &lt;= radius;</span>
+<span class="nc bnc" id="L55" title="All 2 branches missed.">        return center.distanceTo(p) &lt;= radius;</span>
     }
 
 }

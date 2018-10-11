@@ -4,6 +4,7 @@ import g47923.asciipaint.model.AsciiPaint;
 import java.util.Arrays;
 import g47923.asciipaint.view.View;
 import static java.lang.Integer.parseInt;
+import java.util.Locale;
 
 /**
  * Manages the commands.
@@ -21,12 +22,12 @@ class CommandManager {
      *
      * @param asciipaint is the game to control.
      */
-<span class="fc" id="L24">    public CommandManager(AsciiPaint asciipaint) {</span>
-<span class="fc" id="L25">        this.asciiPaint = asciipaint;</span>
-<span class="fc" id="L26">        this.commandNames = new String[]{&quot;add&quot;, &quot;show&quot;, &quot;remove&quot;, &quot;move&quot;, &quot;exit&quot;,</span>
+<span class="nc" id="L25">    public CommandManager(AsciiPaint asciipaint) {</span>
+<span class="nc" id="L26">        this.asciiPaint = asciipaint;</span>
+<span class="nc" id="L27">        this.commandNames = new String[]{&quot;add&quot;, &quot;show&quot;, &quot;remove&quot;, &quot;move&quot;, &quot;exit&quot;,</span>
             &quot;help&quot;};
-<span class="fc" id="L28">        this.shapeNames = new String[]{&quot;circle&quot;, &quot;rectangle&quot;, &quot;triangle&quot;, &quot;square&quot;};</span>
-<span class="fc" id="L29">    }</span>
+<span class="nc" id="L29">        this.shapeNames = new String[]{&quot;circle&quot;, &quot;rectangle&quot;, &quot;triangle&quot;, &quot;square&quot;};</span>
+<span class="nc" id="L30">    }</span>
 
     /**
      * Tells if the given string is a command name.
@@ -35,7 +36,7 @@ class CommandManager {
      * @return true if the given string is a command name.
      */
     boolean isCommandName(String str) {
-<span class="fc" id="L38">        return Arrays.asList(commandNames).contains(str);</span>
+<span class="nc" id="L39">        return Arrays.asList(commandNames).contains(str);</span>
     }
 
     /**
@@ -45,7 +46,7 @@ class CommandManager {
      * @return true if the given string is a shape name.
      */
     boolean isShapeName(String str) {
-<span class="fc" id="L48">        return Arrays.asList(shapeNames).contains(str);</span>
+<span class="nc" id="L49">        return Arrays.asList(shapeNames).contains(str);</span>
     }
 
     /**
@@ -55,7 +56,7 @@ class CommandManager {
      * @return an array of the split strings.
      */
     public String[] splitLine(String line) {
-<span class="fc" id="L58">        return line.split(&quot;\\s+&quot;);</span>
+<span class="nc" id="L59">        return line.split(&quot;\\s+&quot;);</span>
     }
 
     /**
@@ -67,11 +68,11 @@ class CommandManager {
      * @throws IllegalArgumentException if the given string is not a command.
      */
     String requireCommandName(String str) {
-<span class="fc bfc" id="L70" title="All 2 branches covered.">        if (!isCommandName(str.toLowerCase())) {</span>
-<span class="fc" id="L71">            throw new IllegalArgumentException(&quot;\&quot;&quot; + str + &quot;\&quot; is not &quot;</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">        if (!isCommandName(str.toLowerCase(Locale.getDefault()))) {</span>
+<span class="nc" id="L72">            throw new IllegalArgumentException(&quot;\&quot;&quot; + str + &quot;\&quot; is not &quot;</span>
                     + &quot;a command.&quot;);
         }
-<span class="fc" id="L74">        return str;</span>
+<span class="nc" id="L75">        return str;</span>
     }
 
     /**
@@ -83,11 +84,11 @@ class CommandManager {
      * @throws IllegalArgumentException if the given string is not a shape name.
      */
     String requireShapeName(String str) {
-<span class="fc bfc" id="L86" title="All 2 branches covered.">        if (!isShapeName(str.toLowerCase())) {</span>
-<span class="fc" id="L87">            throw new IllegalArgumentException(&quot;\&quot;&quot; + str + &quot;\&quot; is not &quot;</span>
+<span class="nc bnc" id="L87" title="All 2 branches missed.">        if (!isShapeName(str.toLowerCase(Locale.getDefault()))) {</span>
+<span class="nc" id="L88">            throw new IllegalArgumentException(&quot;\&quot;&quot; + str + &quot;\&quot; is not &quot;</span>
                     + &quot;a valid shape name.&quot;);
         }
-<span class="fc" id="L90">        return str;</span>
+<span class="nc" id="L91">        return str;</span>
     }
 
     /**
@@ -97,13 +98,13 @@ class CommandManager {
      * @throws IllegalArgumentException if args lacks required argument.
      */
     void addNewRectangle(String[] args) {
-<span class="fc bfc" id="L100" title="All 2 branches covered.">        if (args.length &lt; 5) {</span>
-<span class="fc" id="L101">            throw new IllegalArgumentException(&quot;Arguments undefined, a &quot;</span>
+<span class="nc bnc" id="L101" title="All 2 branches missed.">        if (args.length &lt; 5) {</span>
+<span class="nc" id="L102">            throw new IllegalArgumentException(&quot;Arguments undefined, a &quot;</span>
                     + &quot;rectangle requires: x, y, width, length and a color.&quot;);
         }
-<span class="fc" id="L104">        asciiPaint.newRectangle(parseInt(args[0]), parseInt(args[1]),</span>
-<span class="fc" id="L105">                parseInt(args[2]), parseInt(args[3]), args[4].charAt(0));</span>
-<span class="fc" id="L106">    }</span>
+<span class="nc" id="L105">        asciiPaint.newRectangle(parseInt(args[0]), parseInt(args[1]),</span>
+<span class="nc" id="L106">                parseInt(args[2]), parseInt(args[3]), args[4].charAt(0));</span>
+<span class="nc" id="L107">    }</span>
 
     /**
      * Adds a new square corresponding to the given arguments.
@@ -113,13 +114,13 @@ class CommandManager {
      *
      */
     void addNewSquare(String[] args) {
-<span class="fc bfc" id="L116" title="All 2 branches covered.">        if (args.length &lt; 4) {</span>
-<span class="fc" id="L117">            throw new IllegalArgumentException(&quot;Arguments undefined, a &quot;</span>
+<span class="nc bnc" id="L117" title="All 2 branches missed.">        if (args.length &lt; 4) {</span>
+<span class="nc" id="L118">            throw new IllegalArgumentException(&quot;Arguments undefined, a &quot;</span>
                     + &quot;square requires: x, y, side and a color.&quot;);
         }
-<span class="fc" id="L120">        asciiPaint.newSquare(parseInt(args[0]), parseInt(args[1]),</span>
-<span class="fc" id="L121">                parseInt(args[2]), args[3].charAt(0));</span>
-<span class="fc" id="L122">    }</span>
+<span class="nc" id="L121">        asciiPaint.newSquare(parseInt(args[0]), parseInt(args[1]),</span>
+<span class="nc" id="L122">                parseInt(args[2]), args[3].charAt(0));</span>
+<span class="nc" id="L123">    }</span>
 
     /**
      * Adds a new circle corresponding to the given arguments.
@@ -129,13 +130,13 @@ class CommandManager {
      *
      */
     void addNewCircle(String[] args) {
-<span class="fc bfc" id="L132" title="All 2 branches covered.">        if (args.length &lt; 4) {</span>
-<span class="fc" id="L133">            throw new IllegalArgumentException(&quot;Arguments undefined, a &quot;</span>
+<span class="nc bnc" id="L133" title="All 2 branches missed.">        if (args.length &lt; 4) {</span>
+<span class="nc" id="L134">            throw new IllegalArgumentException(&quot;Arguments undefined, a &quot;</span>
                     + &quot;circle requires: x, y, radius and a color.&quot;);
         }
-<span class="fc" id="L136">        asciiPaint.newCircle(parseInt(args[0]), parseInt(args[1]),</span>
-<span class="fc" id="L137">                parseInt(args[2]), args[3].charAt(0));</span>
-<span class="fc" id="L138">    }</span>
+<span class="nc" id="L137">        asciiPaint.newCircle(parseInt(args[0]), parseInt(args[1]),</span>
+<span class="nc" id="L138">                parseInt(args[2]), args[3].charAt(0));</span>
+<span class="nc" id="L139">    }</span>
 
     /**
      * Adds a new triangle corresponding to the given arguments.
@@ -144,14 +145,14 @@ class CommandManager {
      * @throws IllegalArgumentException if args lacks required argument.
      */
     void addNewTriangle(String... args) {
-<span class="fc bfc" id="L147" title="All 2 branches covered.">        if (args.length &lt; 7) {</span>
-<span class="fc" id="L148">            throw new IllegalArgumentException(&quot;Arguments undefined, a &quot;</span>
+<span class="nc bnc" id="L148" title="All 2 branches missed.">        if (args.length &lt; 7) {</span>
+<span class="nc" id="L149">            throw new IllegalArgumentException(&quot;Arguments undefined, a &quot;</span>
                     + &quot;triangle requires: x1, y1, x2, y2, x3, y3 and a color.&quot;);
         }
-<span class="fc" id="L151">        asciiPaint.newTriangle(parseInt(args[0]), parseInt(args[1]),</span>
-<span class="fc" id="L152">                parseInt(args[2]), parseInt(args[3]), parseInt(args[4]),</span>
-<span class="fc" id="L153">                parseInt(args[5]), args[6].charAt(0));</span>
-<span class="fc" id="L154">    }</span>
+<span class="nc" id="L152">        asciiPaint.newTriangle(parseInt(args[0]), parseInt(args[1]),</span>
+<span class="nc" id="L153">                parseInt(args[2]), parseInt(args[3]), parseInt(args[4]),</span>
+<span class="nc" id="L154">                parseInt(args[5]), args[6].charAt(0));</span>
+<span class="nc" id="L155">    }</span>
 
     /**
      * Adds a new shape to the game drawing.
@@ -161,24 +162,24 @@ class CommandManager {
      * @throws IllegalArgumentException is the given shape name does not exist.
      */
     void addNewShape(String shape, String... args) {
-<span class="pc bpc" id="L164" title="4 of 18 branches missed.">        switch (shape) {</span>
+<span class="nc bnc" id="L165" title="All 18 branches missed.">        switch (shape) {</span>
             case &quot;circle&quot;:
-<span class="fc" id="L166">                addNewCircle(args);</span>
-<span class="fc" id="L167">                break;</span>
+<span class="nc" id="L167">                addNewCircle(args);</span>
+<span class="nc" id="L168">                break;</span>
             case &quot;square&quot;:
-<span class="fc" id="L169">                addNewSquare(args);</span>
-<span class="fc" id="L170">                break;</span>
+<span class="nc" id="L170">                addNewSquare(args);</span>
+<span class="nc" id="L171">                break;</span>
             case &quot;rectangle&quot;:
-<span class="fc" id="L172">                addNewRectangle(args);</span>
-<span class="fc" id="L173">                break;</span>
+<span class="nc" id="L173">                addNewRectangle(args);</span>
+<span class="nc" id="L174">                break;</span>
             case &quot;triangle&quot;:
-<span class="fc" id="L175">                addNewTriangle(args);</span>
-<span class="fc" id="L176">                break;</span>
+<span class="nc" id="L176">                addNewTriangle(args);</span>
+<span class="nc" id="L177">                break;</span>
             default:
-<span class="fc" id="L178">                throw new IllegalArgumentException(&quot;\&quot;&quot; + shape + &quot;\&quot; is not a &quot;</span>
+<span class="nc" id="L179">                throw new IllegalArgumentException(&quot;\&quot;&quot; + shape + &quot;\&quot; is not a &quot;</span>
                         + &quot;shape.&quot;);
         }
-<span class="fc" id="L181">    }</span>
+<span class="nc" id="L182">    }</span>
 
     /**
      * Moves the shape containing the given point.
@@ -190,9 +191,9 @@ class CommandManager {
      * @throws IllegalArgumentException if there is no shape to move.
      */
     void moveShapeAt(String x, String y, String dx, String dy) {
-<span class="nc" id="L193">        asciiPaint.moveShapeAt(parseInt(x), parseInt(y), parseInt(dx),</span>
-<span class="nc" id="L194">                parseInt(dy));</span>
-<span class="nc" id="L195">    }</span>
+<span class="nc" id="L194">        asciiPaint.moveShapeAt(parseInt(x), parseInt(y), parseInt(dx),</span>
+<span class="nc" id="L195">                parseInt(dy));</span>
+<span class="nc" id="L196">    }</span>
 
     /**
      * Removes the shape containing the given point.
@@ -202,8 +203,8 @@ class CommandManager {
      * @throws IllegalArgumentException if there is no shape to remove.
      */
     void removeShapeAt(String x, String y) {
-<span class="fc" id="L205">        asciiPaint.removeShapeAt(parseInt(x), parseInt(y));</span>
-<span class="fc" id="L206">    }</span>
+<span class="nc" id="L206">        asciiPaint.removeShapeAt(parseInt(x), parseInt(y));</span>
+<span class="nc" id="L207">    }</span>
 
     /**
      * Executes the command entered by the user.
@@ -212,41 +213,41 @@ class CommandManager {
      * @return true if the user ask for exiting the program.
      */
     public boolean executeCommand(String[] tokens) {
-<span class="nc bnc" id="L215" title="All 2 branches missed.">        if (tokens.length == 0) {</span>
-<span class="nc" id="L216">            throw new IllegalArgumentException(&quot;No tokens to parse.&quot;);</span>
+<span class="nc bnc" id="L216" title="All 2 branches missed.">        if (tokens.length == 0) {</span>
+<span class="nc" id="L217">            throw new IllegalArgumentException(&quot;No tokens to parse.&quot;);</span>
         }
-<span class="nc bnc" id="L218" title="All 22 branches missed.">        switch (requireCommandName(tokens[0])) {</span>
+<span class="nc bnc" id="L219" title="All 22 branches missed.">        switch (requireCommandName(tokens[0])) {</span>
             case &quot;add&quot;:
-<span class="nc bnc" id="L220" title="All 2 branches missed.">                if (tokens.length == 1) {</span>
-<span class="nc" id="L221">                    throw new IllegalArgumentException(&quot;add requires arguments.&quot;);</span>
+<span class="nc bnc" id="L221" title="All 2 branches missed.">                if (tokens.length == 1) {</span>
+<span class="nc" id="L222">                    throw new IllegalArgumentException(&quot;add requires arguments.&quot;);</span>
                 }
-<span class="nc" id="L223">                addNewShape(requireShapeName(tokens[1]),</span>
-<span class="nc" id="L224">                        Arrays.copyOfRange(tokens, 2, tokens.length));</span>
-<span class="nc" id="L225">                break;</span>
+<span class="nc" id="L224">                addNewShape(requireShapeName(tokens[1]),</span>
+<span class="nc" id="L225">                        Arrays.copyOfRange(tokens, 2, tokens.length));</span>
+<span class="nc" id="L226">                break;</span>
             case &quot;remove&quot;:
-<span class="nc bnc" id="L227" title="All 2 branches missed.">                if (tokens.length &lt; 3) {</span>
-<span class="nc" id="L228">                    throw new IllegalArgumentException(&quot;Not enough arguments,&quot;</span>
+<span class="nc bnc" id="L228" title="All 2 branches missed.">                if (tokens.length &lt; 3) {</span>
+<span class="nc" id="L229">                    throw new IllegalArgumentException(&quot;Not enough arguments,&quot;</span>
                             + &quot; remove requires: x and y.&quot;);
                 }
-<span class="nc" id="L231">                removeShapeAt(tokens[1], tokens[2]);</span>
-<span class="nc" id="L232">                break;</span>
+<span class="nc" id="L232">                removeShapeAt(tokens[1], tokens[2]);</span>
+<span class="nc" id="L233">                break;</span>
             case &quot;move&quot;:
-<span class="nc bnc" id="L234" title="All 2 branches missed.">                if (tokens.length &lt; 5) {</span>
-<span class="nc" id="L235">                    throw new IllegalArgumentException(&quot;Not enough arguments, &quot;</span>
+<span class="nc bnc" id="L235" title="All 2 branches missed.">                if (tokens.length &lt; 5) {</span>
+<span class="nc" id="L236">                    throw new IllegalArgumentException(&quot;Not enough arguments, &quot;</span>
                             + &quot;move requires: x, y, dx, dy.&quot;);
                 }
-<span class="nc" id="L238">                moveShapeAt(tokens[1], tokens[2], tokens[3], tokens[4]);</span>
-<span class="nc" id="L239">                break;</span>
+<span class="nc" id="L239">                moveShapeAt(tokens[1], tokens[2], tokens[3], tokens[4]);</span>
+<span class="nc" id="L240">                break;</span>
             case &quot;help&quot;:
-<span class="nc" id="L241">                new View(asciiPaint).printHelp();</span>
-<span class="nc" id="L242">                break;</span>
+<span class="nc" id="L242">                new View(asciiPaint).printHelp();</span>
+<span class="nc" id="L243">                break;</span>
             case &quot;show&quot;:
-<span class="nc" id="L244">                System.out.println(asciiPaint.asAscii());</span>
-<span class="nc" id="L245">                break;</span>
+<span class="nc" id="L245">                System.out.println(asciiPaint.asAscii());</span>
+<span class="nc" id="L246">                break;</span>
             default:
-<span class="nc" id="L247">                return true;</span>
+<span class="nc" id="L248">                return true;</span>
         }
-<span class="nc" id="L249">        return false;</span>
+<span class="nc" id="L250">        return false;</span>
     }
 
 }

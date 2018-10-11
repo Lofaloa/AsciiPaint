@@ -22,19 +22,19 @@ class Drawing {
      * @param height is the height of this drawing.
      * @param width is the width of this drawing.
      */
-<span class="fc" id="L25">    public Drawing(int width, int height) {</span>
-<span class="fc bfc" id="L26" title="All 2 branches covered.">        if (height &lt; 0) {</span>
-<span class="fc" id="L27">            throw new IllegalArgumentException(height + &quot; is not valid, &quot;</span>
+<span class="nc" id="L25">    public Drawing(int width, int height) {</span>
+<span class="nc bnc" id="L26" title="All 2 branches missed.">        if (height &lt; 0) {</span>
+<span class="nc" id="L27">            throw new IllegalArgumentException(height + &quot; is not valid, &quot;</span>
                     + &quot;the height should be positive.&quot;);
         }
-<span class="fc bfc" id="L30" title="All 2 branches covered.">        if (width &lt; 0) {</span>
-<span class="fc" id="L31">            throw new IllegalArgumentException(width + &quot; is not valid, &quot;</span>
+<span class="nc bnc" id="L30" title="All 2 branches missed.">        if (width &lt; 0) {</span>
+<span class="nc" id="L31">            throw new IllegalArgumentException(width + &quot; is not valid, &quot;</span>
                     + &quot;the height should be positive.&quot;);
         }
-<span class="fc" id="L34">        this.shapes = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L35">        this.height = height;</span>
-<span class="fc" id="L36">        this.width = width;</span>
-<span class="fc" id="L37">    }</span>
+<span class="nc" id="L34">        this.shapes = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L35">        this.height = height;</span>
+<span class="nc" id="L36">        this.width = width;</span>
+<span class="nc" id="L37">    }</span>
 
     /**
      * Gets the shape of this drawing.
@@ -42,7 +42,7 @@ class Drawing {
      * @return the shape of this drawing.
      */
     List&lt;Shape&gt; getShapes() {
-<span class="fc" id="L45">        return new ArrayList&lt;&gt;(shapes);</span>
+<span class="nc" id="L45">        return new ArrayList&lt;&gt;(shapes);</span>
     }
 
     /**
@@ -51,7 +51,7 @@ class Drawing {
      * @return the height of this drawing.
      */
     int getHeight() {
-<span class="fc" id="L54">        return height;</span>
+<span class="nc" id="L54">        return height;</span>
     }
 
     /**
@@ -60,7 +60,7 @@ class Drawing {
      * @return the width of this drawing.
      */
     int getWidth() {
-<span class="fc" id="L63">        return width;</span>
+<span class="nc" id="L63">        return width;</span>
     }
 
     /**
@@ -71,12 +71,13 @@ class Drawing {
      * is returned.
      */
     Shape getShapeAt(Point p) {
-<span class="fc bfc" id="L74" title="All 2 branches covered.">        for (Shape shape : shapes) {</span>
-<span class="fc bfc" id="L75" title="All 2 branches covered.">            if (shape.isInside(p)) {</span>
-<span class="fc" id="L76">                return shape;</span>
+<span class="nc" id="L74">        Shape save = null;</span>
+<span class="nc bnc" id="L75" title="All 2 branches missed.">        for (Shape shape : shapes) {</span>
+<span class="nc bnc" id="L76" title="All 2 branches missed.">            if (shape.isInside(p)) {</span>
+<span class="nc" id="L77">                save = shape;</span>
             }
-<span class="fc" id="L78">        }</span>
-<span class="fc" id="L79">        return null;</span>
+<span class="nc" id="L79">        }</span>
+<span class="nc" id="L80">        return save;</span>
     }
 
     /**
@@ -85,8 +86,8 @@ class Drawing {
      * @param shape is the shape to add.
      */
     void add(Shape shape) {
-<span class="fc" id="L88">        shapes.add(shape);</span>
-<span class="fc" id="L89">    }</span>
+<span class="nc" id="L89">        shapes.add(shape);</span>
+<span class="nc" id="L90">    }</span>
 
     /**
      * Moves the given shape.
@@ -96,12 +97,12 @@ class Drawing {
      * @param dy is the difference added to the y position.
      */
     void move(Shape shape, int dx, int dy) {
-<span class="fc bfc" id="L99" title="All 2 branches covered.">        if (!shapes.contains(shape)) {</span>
-<span class="fc" id="L100">            throw new IllegalArgumentException(&quot;The given shape has not been &quot;</span>
+<span class="nc bnc" id="L100" title="All 2 branches missed.">        if (!shapes.contains(shape)) {</span>
+<span class="nc" id="L101">            throw new IllegalArgumentException(&quot;The given shape has not been &quot;</span>
                     + &quot;added yet.&quot;);
         }
-<span class="fc" id="L103">        shape.move(dx, dy);</span>
-<span class="fc" id="L104">    }</span>
+<span class="nc" id="L104">        shape.move(dx, dy);</span>
+<span class="nc" id="L105">    }</span>
 
     /**
      * Removes the given shape from this drawing.
@@ -109,8 +110,8 @@ class Drawing {
      * @param shape is the shape to remove.
      */
     void remove(Shape shape) {
-<span class="fc" id="L112">        shapes.remove(shape);</span>
-<span class="fc" id="L113">    }</span>
+<span class="nc" id="L113">        shapes.remove(shape);</span>
+<span class="nc" id="L114">    }</span>
 
     /**
      * Adds the given shapes to this drawing.
@@ -118,8 +119,8 @@ class Drawing {
      * @param shapes are the shapes to add.
      */
     void addAllShapes(Shape... shapes) {
-<span class="fc" id="L121">        this.shapes.addAll(Arrays.asList(shapes));</span>
-<span class="fc" id="L122">    }</span>
+<span class="nc" id="L122">        this.shapes.addAll(Arrays.asList(shapes));</span>
+<span class="nc" id="L123">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

@@ -16,17 +16,17 @@ class Point {
      * @param x is the x position of this Point.
      * @param y is the y position of this Point.
      */
-<span class="fc" id="L19">    public Point(double x, double y) {</span>
-<span class="fc" id="L20">        this.x = x;</span>
-<span class="fc" id="L21">        this.y = y;</span>
-<span class="fc" id="L22">    }</span>
+<span class="nc" id="L19">    public Point(double x, double y) {</span>
+<span class="nc" id="L20">        this.x = x;</span>
+<span class="nc" id="L21">        this.y = y;</span>
+<span class="nc" id="L22">    }</span>
 
     /**
      * Initializes this x and y position point to 0
      */
     public Point() {
-<span class="fc" id="L28">        this(0, 0);</span>
-<span class="fc" id="L29">    }</span>
+<span class="nc" id="L28">        this(0, 0);</span>
+<span class="nc" id="L29">    }</span>
 
     /**
      * Gets the x position of this point.
@@ -34,7 +34,7 @@ class Point {
      * @return the x position of this point.
      */
     public double getX() {
-<span class="fc" id="L37">        return x;</span>
+<span class="nc" id="L37">        return x;</span>
     }
 
     /**
@@ -43,7 +43,7 @@ class Point {
      * @return the y position of this point.
      */
     public double getY() {
-<span class="fc" id="L46">        return y;</span>
+<span class="nc" id="L46">        return y;</span>
     }
 
     /**
@@ -53,9 +53,9 @@ class Point {
      * @param dy is the y difference to add to this y position.
      */
     public void move(double dx, double dy) {
-<span class="fc" id="L56">        this.x += dx;</span>
-<span class="fc" id="L57">        this.y += dy;</span>
-<span class="fc" id="L58">    }</span>
+<span class="nc" id="L56">        this.x += dx;</span>
+<span class="nc" id="L57">        this.y += dy;</span>
+<span class="nc" id="L58">    }</span>
 
     /**
      * Gets the distance between this point and an other.
@@ -64,8 +64,8 @@ class Point {
      * @return the distance between this point and an other.
      */
     double distanceTo(Point other) {
-<span class="fc" id="L67">        return Math.sqrt(Math.pow(other.getX() - x, 2)</span>
-<span class="fc" id="L68">                + Math.pow((other.getY() - y), 2));</span>
+<span class="nc" id="L67">        return Math.sqrt(Math.pow(other.getX() - x, 2)</span>
+<span class="nc" id="L68">                + Math.pow((other.getY() - y), 2));</span>
     }
 
 }
