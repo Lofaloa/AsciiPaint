@@ -35,18 +35,29 @@ public class View {
 <span class="nc" id="L35">        System.out.print(&quot;&gt; &quot;);</span>
 <span class="nc" id="L36">    }</span>
 
+    public void printHelp() {
+<span class="nc" id="L39">        String help = &quot;COMMAND     USAGE                                         ACTION\n&quot;</span>
+                    + &quot;add         add [shape] [arguments]]                      Adds a shape to the drawing.\n&quot;
+                    + &quot;move        move [x of shape] [y of shape] [dx] [dy]      Moves the pointed shape.\n&quot;
+                    + &quot;remove      remove [x of shape] [y of shape] [dx] [dy]    Removes the pointed shape.\n&quot;
+                    + &quot;show        show                                          Shows the current state of the drawing.\n&quot;
+                    + &quot;exit        exit                                          Exits Ascii Paint.\n&quot;
+                    + &quot;help        help                                          Shows help.&quot;;
+<span class="nc" id="L46">        System.out.println(help);</span>
+<span class="nc" id="L47">    }</span>
+
     /**
      * Reads the current line.
      *
      * @return the current line.
      */
     public String readLine() {
-<span class="nc" id="L44">        String line = in.nextLine();</span>
-<span class="nc bnc" id="L45" title="All 2 branches missed.">        while (line.length() == 0) {</span>
-<span class="nc" id="L46">            printPrompt();</span>
-<span class="nc" id="L47">            line =  in.nextLine();</span>
+<span class="nc" id="L55">        String line = in.nextLine();</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">        while (line.length() == 0) {</span>
+<span class="nc" id="L57">            printPrompt();</span>
+<span class="nc" id="L58">            line =  in.nextLine();</span>
         }
-<span class="nc" id="L49">        return line;     </span>
+<span class="nc" id="L60">        return line;</span>
     }
 
 }

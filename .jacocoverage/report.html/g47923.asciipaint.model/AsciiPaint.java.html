@@ -18,8 +18,8 @@ public class AsciiPaint {
      * positive.
      */
 <span class="fc" id="L20">    public AsciiPaint(int width, int height) {</span>
-<span class="pc bpc" id="L21" title="2 of 4 branches missed.">        if (width &lt; 0 || height &lt; 0) {</span>
-<span class="nc" id="L22">            throw new IllegalArgumentException(width + &quot; x &quot; + height + &quot; is not a&quot;</span>
+<span class="fc bfc" id="L21" title="All 4 branches covered.">        if (width &lt; 0 || height &lt; 0) {</span>
+<span class="fc" id="L22">            throw new IllegalArgumentException(width + &quot; x &quot; + height + &quot; is not a&quot;</span>
                     + &quot; valid dimension, width and height should be positive.&quot;);
         }
 <span class="fc" id="L25">        this.drawing = new Drawing(width, height);</span>
@@ -93,18 +93,18 @@ public class AsciiPaint {
      * @param x1 is the x position of the triangle first corner.
      * @param y1 is the y position of the triangle first corner.
      * @param x2 is the x position of the triangle second corner.
-<span class="nc" id="L96">     * @param y2 is the y position of the triangle second corner.</span>
+     * @param y2 is the y position of the triangle second corner.
      * @param x3 is the x position of the triangle third corner.
      * @param y3 is the y position of the triangle third corner.
-<span class="nc" id="L99">     * @param color is the color of the new triangle.</span>
-<span class="nc" id="L100">     */</span>
+     * @param color is the color of the new triangle.
+     */
 <span class="nc" id="L101">    public void newTriangle(int x1, int y1, int x2, int y2, int x3, int y3,</span>
-<span class="nc" id="L102">            char color) {</span>
+            char color) {
 <span class="pc" id="L103">        drawing.addAllShapes(new Triangle(new Point(x1, y1), new Point(x2, y2),</span>
 <span class="nc" id="L104">                new Point(x3, y3), color));</span>
-<span class="fc" id="L105">    }</span>
-
-    /**
+<span class="pc" id="L105">    }</span>
+<span class="nc" id="L106"></span>
+<span class="nc" id="L107">    /**</span>
      * Moves the shape containing the given point.
      *
      * @param x is the x position of the point contained by the shape to move.
@@ -115,11 +115,11 @@ public class AsciiPaint {
      * contained by the shape to move.
      */
     public void moveShapeAt(int x, int y, int dx, int dy) {
-<span class="nc bnc" id="L118" title="All 2 branches missed.">        if (isBlankDrawing()) {</span>
-<span class="nc" id="L119">            throw new IllegalStateException(&quot;No shape to move.&quot;);</span>
+<span class="fc bfc" id="L118" title="All 2 branches covered.">        if (isBlankDrawing()) {</span>
+<span class="fc" id="L119">            throw new IllegalStateException(&quot;No shape to move.&quot;);</span>
         }
-<span class="nc" id="L121">        drawing.getShapeAt(new Point(x, y)).move(dx, dy);</span>
-<span class="nc" id="L122">    }</span>
+<span class="fc" id="L121">        drawing.getShapeAt(new Point(x, y)).move(dx, dy);</span>
+<span class="fc" id="L122">    }</span>
 
     /**
      * Removes the given shape in the drawing.
@@ -145,10 +145,10 @@ public class AsciiPaint {
 <span class="fc bfc" id="L145" title="All 2 branches covered.">            for (int j = 1; j &lt;= drawing.getWidth(); j++) {</span>
 <span class="fc" id="L146">                Point currentPoint = new Point(i, j);</span>
 <span class="fc" id="L147">                Shape s = drawing.getShapeAt(currentPoint);</span>
-<span class="pc bpc" id="L148" title="3 of 4 branches missed.">                if (s != null &amp;&amp; s.isInside(currentPoint)) {</span>
-<span class="nc" id="L149">                    builder.append(&quot; &quot;);</span>
-<span class="nc" id="L150">                    builder.append(s.getColor());</span>
-<span class="nc" id="L151">                    builder.append(&quot; &quot;);</span>
+<span class="pc bpc" id="L148" title="1 of 4 branches missed.">                if (s != null &amp;&amp; s.isInside(currentPoint)) {</span>
+<span class="fc" id="L149">                    builder.append(&quot; &quot;);</span>
+<span class="fc" id="L150">                    builder.append(s.getColor());</span>
+<span class="fc" id="L151">                    builder.append(&quot; &quot;);</span>
                 } else {
 <span class="fc" id="L153">                    builder.append(&quot; . &quot;);</span>
                 }
