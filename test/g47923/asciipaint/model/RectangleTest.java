@@ -42,9 +42,9 @@ public class RectangleTest {
     @Test
     public void areCornersInside() {
         Point a = new Point(2, 4);
-        Point b = new Point(6, 4);
-        Point c = new Point(6, 20);
-        Point d = new Point(2, 20);
+        Point b = new Point(5, 4);
+        Point c = new Point(5, 19);
+        Point d = new Point(2, 19);
         Rectangle r = new Rectangle(a, 4, 16, 'a');
         assertTrue(r.isInside(a) && r.isInside(b) && r.isInside(c) && r.isInside(d));
     }
