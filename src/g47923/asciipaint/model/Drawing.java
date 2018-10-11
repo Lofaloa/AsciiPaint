@@ -71,12 +71,13 @@ class Drawing {
      * is returned.
      */
     Shape getShapeAt(Point p) {
+        Shape save = null;
         for (Shape shape : shapes) {
             if (shape.isInside(p)) {
-                return shape;
+                save = shape;
             }
         }
-        return null;
+        return save;
     }
 
     /**

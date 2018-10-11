@@ -49,7 +49,7 @@ public class DrawingTest {
         Shape circle = new Circle(new Point(3, 2), 5, 'x');
         Shape rectangle = new Rectangle(new Point(1, 3), 5, 4, 'x');
         d.addAllShapes(square, rectangle, circle);
-        assertTrue(d.getShapeAt(new Point(0, 0)) instanceof Square);
+        assertTrue(d.getShapeAt(new Point(0, 0)) instanceof Circle);
     }
 
     @Test
